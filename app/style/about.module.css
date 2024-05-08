@@ -1,0 +1,192 @@
+@media screen {
+  .aboutMain {
+    gap: 40px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .aboutMain h4 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--tertiary-color);
+  }
+
+  .aboutContainer {
+    gap: 40px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+
+  .aboutImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .aboutInfo {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .aboutInfo h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  .aboutInfoTop {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutInfoTop span {
+    font-weight: 600;
+    color: var(--tertiary-color);
+  }
+
+  .aboutButton {
+    border: none;
+    padding: 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    border-radius: 8px;
+    width: fit-content;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .aboutButton:hover {
+    background-color:var(--tertiary-light) ;
+  }
+
+  .aboutInfoContainer {
+    gap: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .infoAboutContainer {
+    gap: 20px;
+    height: 200px;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: var(--background-shadow);
+  }
+
+  .infoAboutIcon {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aboutIcon {
+    color: var(--tertiary-color);
+  }
+
+  .infoAboutWrapper {
+    gap: 5px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .infoAboutWrapper h1 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .infoAboutWrapper p {
+    font-size: 1rem;
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .aboutMain {
+    padding: 20px;
+    height: 100vh;
+  }
+
+  .aboutMain h4 {
+    font-size: 1.5rem;
+  }
+  .aboutContainer {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .aboutWrapper,
+  .aboutInfo {
+    flex: 50%;
+  }
+
+  .aboutInfo {
+    align-items: start;
+  }
+
+  .aboutWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aboutImg {
+    width: 60%;
+  }
+
+  .aboutInfoContainer {
+    flex-direction: row;
+  }
+
+  .infoAboutContainer {
+    width: 300px;
+  }
+
+  .aboutInfo h4 {
+    text-align: start;
+  }
+
+  .aboutInfo h1 {
+    text-align: start;
+    font-size: 1.4rem;
+    width: 80%;
+  }
+
+  .aboutInfo {
+    flex: 50%;
+    text-align: start;
+  }
+
+  .infoAboutWrapper h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

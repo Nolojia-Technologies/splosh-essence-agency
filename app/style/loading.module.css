@@ -1,0 +1,58 @@
+@media screen {
+  .loadingComponent {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loaderHome {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader {
+    font-size: 1rem;
+    display: inline-block;
+    font-weight: bold;
+    color: var(--primary-color);
+    box-sizing: border-box;
+    text-shadow: 0 0 2px #fff, 0 0 1px #fff, 0 0 1px #fff;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  .loader::after {
+    content: "Splosh";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    color: var(--tertiary-color);
+    animation: animloader 6s linear infinite;
+  }
+
+  @keyframes animloader {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+}

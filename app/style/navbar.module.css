@@ -1,0 +1,282 @@
+@media screen {
+  .NavContainer {
+    height: 80px;
+    display: flex;
+    padding: 10px;
+    position: relative;
+    align-items: center;
+    color: var(--background-color);
+    justify-content: space-between;
+    background-color: var(--tertiary-color);
+  }
+
+  .containerNavTop {
+    height: 70px;
+    display: flex;
+    padding-left: 10px;
+    justify-content: space-between;
+  }
+
+  .logo {
+    height:auto;
+    width: 70px;
+  }
+
+  .containerNavTopWrapper {
+    height: 100%;
+    display: flex;
+  }
+
+  .containerTopInn{
+    gap: 10px;
+    width: 180px;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .topIcon {
+    color: var(--tertiary-color);
+  }
+
+  .containerTopInn:hover {
+    color: var(--primary-color);
+  }
+
+  .containerTopInn:hover .topIcon {
+    color: var(--primary-color);
+  }
+
+  .containerTopInnActive{
+    gap: 10px;
+    width: 180px;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tertiary-color);
+  }
+
+
+  .containerTopInnActive .topIcon {
+    color: var(--background-color);
+  }
+
+  
+  .containerTopInnActive:hover .topIcon   {
+    color: var(--primary-color);
+  }
+
+  .containerTopInn h1 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--tertiary-color);
+  }
+
+  .containerTopInn:hover h1 {
+    color: var(--primary-color);
+  }
+
+  .menuIcon {
+    cursor: pointer;
+  }
+
+  .menuIcon:hover {
+    color: var(--primary-color);
+  }
+
+  .NavMiddle {
+    gap: 20px;
+    display: none;
+    align-items: center;
+    justify-self: center;
+  }
+
+  .LinkContainer {
+    font-size: 1.2rem;
+    font-weight: 100;
+    text-transform: capitalize;
+    color: var(--background-color);
+  }
+
+  .LinkContainer:hover {
+    color: var(--primary-color);
+    
+  }
+
+  /* side nav  */
+  .sideNav {
+    top: 0;
+    bottom: 0;
+    gap: 30px;
+    width: 20%;
+    z-index: 999;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    right: -1000px;
+    position: fixed;
+    min-width: fit-content;
+    flex-direction: column;
+    transition: right 0.8s ease;
+    border-radius: 12px 0 0 12px;
+    box-shadow: var(--background-shadow);
+    background-color: var(--background-color);
+  }
+
+  .sideSlide {
+    right: 0;
+  }
+
+  .exitIcon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .exitIcon:hover {
+    transform: rotate(180deg);
+  }
+
+  .exitIcon:hover {
+    color: var(--tertiary-color);
+  }
+
+  .topsideNav {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .profileImg {
+    padding: 5px;
+    object-fit: cover;
+    border-radius: 360px;
+    object-position: center top;
+    box-shadow: var(--profile-shadow);
+    background-color: var(--profile-color);
+  }
+
+  .profileGuestImg {
+    padding: 5px;
+    object-fit: contain;
+    object-position: center;
+    box-shadow: var(--profile-shadow);
+    background-color: var(--background-color);
+  }
+
+
+  .profileContainer {
+    gap: 10px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .profileBar {
+    gap: 20px;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .profileLogin {
+    gap: 10px;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    border-radius: 12px;
+    align-items: center;
+  }
+
+  .profileLogin:hover {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+  }
+
+  .profileLogin:hover h1 {
+    color: var(--background-color);
+
+  }
+
+  .profileLogin:hover .logInIcon {
+    color: var(--background-color);
+
+  }
+
+  .logInIcon {
+    padding: 5px;
+    cursor: pointer;
+    color: var(--tertiary-color);
+    box-shadow: var(--profile-shadow);
+    background-color: var(--profile-color);
+  }
+
+  .logOutIcon {
+    padding: 5px;
+    cursor: pointer;
+    color: var(--tertiary-color);
+    box-shadow: var(--profile-shadow);
+    background-color: var(--profile-color);
+  }
+
+  .profileBar h1 {
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: var(--profile-shadow);
+    background-color: var(--profile-color);
+  }
+
+  .sideMidNav {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .sideLinkContainer {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    justify-content: space-between;
+    box-shadow: var(--profile-shadow);
+    background-color: var(--profile-color);
+  }
+
+  .sideLinkContainer:hover {
+    color: var(--secondary-color);
+    
+  }
+
+  .activeLink {
+    color: var(--primary-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .NavMiddle {
+    display: flex;
+  }
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

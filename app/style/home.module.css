@@ -1,0 +1,140 @@
+@media screen {
+  .homeContainer {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .homeWrapper {
+    object-position: center;
+    position: relative;
+    object-fit: cover;
+    height: 84vh;
+  }
+
+  .advertImage {
+    z-index: -100;
+    filter: brightness(0.6);
+  }
+
+  .heroController {
+    width: 100%;
+    z-index: 20;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+    position: absolute;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .heroInfo {
+    gap: 10px;
+    width: 100%;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    padding: 100px;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--background-color);
+  }
+
+  .heroSpan  {
+    padding: 10px 40px;
+    border-radius: 12px;
+    width: fit-content;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .heroSpan h2 {
+    font-size: 1.2rem;
+
+  }
+
+  .heroInfo h1 {
+    font-size: 2.4rem;
+  }
+
+  .heroInfo p {
+    font-size: 1.2rem;
+  }
+
+  .heroCircle {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 360px;
+    justify-content: center;
+    background-color: var(--background-color);
+  }
+
+  .heroCircle:hover {
+    background-color: var(--tertiary-color);
+  }
+
+  .controllerIcon {
+    color: var(--tertiary-color);
+  }
+
+  .heroCircle:hover .controllerIcon {
+    color: var(--background-color);
+  }
+
+  .imageSlider {
+    gap: 5px;
+    z-index: 100;
+    padding: 10px;
+    display: flex;
+    height: inherit;
+    align-items: end;
+    justify-content: center;
+    border-radius: inherit;
+  }
+
+  .circleAdv {
+    width: 10px;
+    height: 10px;
+    border-radius: 360%;
+    border: 2px solid var(--background-color);
+  }
+
+  .activeCircle {
+    width: 20px;
+    height: 10px;
+    border-radius: 12px;
+    background-color: var(--background-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .homeContainer {
+    gap: 0;
+  }
+  }
+
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

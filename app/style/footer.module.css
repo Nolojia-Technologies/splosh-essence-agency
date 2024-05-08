@@ -1,0 +1,136 @@
+@media screen {
+  .contactContainer {
+    gap: 10px;
+    display: flex;
+    font-weight: 300;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+    .contactWrapper {
+      gap: 20px;
+      display: flex;
+      align-items: top;
+      padding: 20px 10px;
+      flex-direction: column;
+    }
+
+    .contactPart {
+      gap:20px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contactPart h1 {
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+
+    .contactPart p {
+      font-size: 1.2rem;
+    }
+
+    .appLinks {
+      gap: 10px;
+      display: flex;
+    }
+
+    .appLinksBtn{
+      cursor: pointer;
+    }
+
+    .contactIcons {
+      gap: 10px;
+      display: flex;
+      flex-wrap:wrap ;
+      align-items: center;
+    }
+
+    .contactIconsP {
+      padding: 10px;
+      display: flex;
+      border-radius: 12px;
+      align-items: center;
+      flex-direction: column;
+      border: 1px solid var(--background-color);
+
+    }
+
+    .socialIcons {
+      width: 30px;
+      height: 30px;
+      fill: var(--background-color);
+      color: var(--background-color);
+    }
+
+    .LinkContainer {
+      color: var(--background-color);
+    }
+
+    .LinkContainer .activeLink {
+      color: var(--secondary-color);
+
+    }
+
+    .activeLink {
+      color: var(--secondary-color);
+    }
+
+    .contactInfoWrapper{
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contactInfo {
+      gap: 20px;
+      display: flex;
+      align-items: start;
+      justify-content: start;
+    }
+
+    .contactInfo h4 {
+      font-weight: 300;
+
+    }
+
+    .footerContainer {
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--background-color);
+      background-color: var(--primary-color);
+    }
+
+    .footerContainer h4 {
+      font-weight: 300;
+      
+    }
+  }
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+  .contactWrapper {
+    padding:80px 50px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

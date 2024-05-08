@@ -1,0 +1,182 @@
+@media screen {
+ .testimonialContainer {
+  gap: 40px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  flex-direction: column;
+ }
+
+
+ .testimonialHeader {
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+ }
+
+ .testimonialHeader h4 {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}
+
+.testimonialHeader h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.testimonialContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonialImg {
+  width:100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 40px;
+  object-position: center;
+}
+
+.testimonialInfo {
+  gap:10px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.testimonialBar {
+  gap: 30px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.ArrowContainer {
+  padding: 5px;
+  display: flex;
+  cursor: pointer;
+  border-radius: 360%;
+  align-items: center;
+  justify-content: center;
+  color: var(--tertiary-color);
+  border: 2px solid var(--tertiary-color);
+}
+
+
+.ArrowContainer:hover {
+  color: var(--background-color);
+  background-color: var(--tertiary-color);
+}
+
+
+.testimonialHeader {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+
+}
+
+.testimonialInn {
+  gap: 20px;
+  z-index: 100;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--background-shadow);
+  background-color: var(--background-color);
+  border-left: 5px solid var(--tertiary-color);
+}
+
+.testimonialInn p {
+  font-size: 1rem;
+}
+
+.testimonialInnHead {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonialInnHead h1 {
+  font-size: 1.2rem;
+}
+
+.testimonialInnHead h4 {
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+
+.testimonialContainer {
+  height: 100vh;
+}
+
+.testimonialImg {
+  position: relative;
+  height: 500px;
+  width:350px;
+  left: 30px;
+}
+
+
+.testimonialHeader h4 {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--tertiary-color);
+}
+
+.testimonialHeader h1 {
+  font-size: 1.8rem;
+}
+
+
+.testimonialContent {
+  padding: 10px;
+  flex-direction: row;
+}
+
+.testimonialInfo {
+  position: relative;
+  padding-right: 40px;
+
+}
+
+.testimonialBar {
+  top: 0;
+  position: absolute;
+}
+
+.ArrowContainer {
+  padding: 10px;
+}
+.testimonialInn {
+  border-bottom: 0;
+}
+
+
+
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

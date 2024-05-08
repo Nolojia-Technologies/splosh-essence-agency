@@ -1,0 +1,52 @@
+@media screen {
+ .infoWrapper{
+  gap: 20px;
+  display: flex;
+  padding: 20px 10px;
+  flex-direction: column;
+ }
+
+ .infoWrapper h1 {
+  font-size: 1.2rem;
+  text-decoration: underline;
+ }
+
+ .infoContain {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+ }
+
+ .infoContain h2 {
+  font-size: 1rem;
+ }
+
+ .contain {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+ }
+
+ .contain h3 {
+  font-size: 1rem;
+  font-weight: 300;
+  list-style: decimal;
+ }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}

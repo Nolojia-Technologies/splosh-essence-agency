@@ -1,0 +1,256 @@
+@media screen {
+  .authComponent {
+    top: 0;
+    left: 0;
+    right: 0;
+    gap: 20px;
+    bottom: 0;
+    padding: 10px;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--tertiary-color);
+  }
+
+  .authComponentBgImage {
+    display: none;
+  }
+
+  .authWrapper {
+    display: flex;
+  }
+
+  .authComponentBgImage,
+  .authWrapper {
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .formContainer {
+    gap: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formHeader {
+    gap: 10px;
+    display: flex;
+    padding-top: 50px;
+    flex-direction: column;
+  }
+
+  .formHeader span {
+    font-weight:800;
+    color: var(--secondary-color);
+  }
+
+  .formHeader h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .formHeader p {
+    font-size: 1rem;
+  }
+
+  .authInput {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+  }
+
+  
+
+  .authInput {
+    border-bottom: 1px solid var(--background-color);
+  }
+
+  .authInput input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background: transparent;
+    color: var(--background-color);
+  }
+
+  .authInput input::placeholder {
+    font-size: 0.8rem;
+    color: var(--background-color);
+  }
+
+  .authInput select {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    background: transparent;
+    text-transform: capitalize;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+
+  .authInput option {
+    padding: 10px;
+  }
+
+  .showBtn {
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  .authIcon {
+    color: var(--background-color);
+  }
+
+  .termsContainer {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .termsContainer input[type="checkbox"] {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 15px;
+    -webkit-appearance: button;
+    border: double 2px var(--background-color);
+    background-color: transparent;
+    color: var(--background-color);
+    white-space: nowrap;
+    overflow: hidden;
+    outline: none;
+    width: 20px;
+    height: 20px;
+  }
+
+  .termsContainer input[type="checkbox"]:checked {
+    background-color: transparent;
+    border-left-color: var(--secondary-color);
+    border-right-color: var(--secondary-color);
+  }
+
+  .termsContainer label {
+    font-size: 0.8rem;
+  }
+
+  .authBottomBtn {
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .formAuthButton {
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: var(--tertiary-color);
+    background-color: var(--background-color);
+  }
+
+  .formAuthButton:hover {
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+
+  }
+
+  .formChange {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .formChange span {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .authBottomBtn p span {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+
+  .formContainer h3 {
+    gap: 20px;
+    display: flex;
+    font-size: .9rem;
+    font-weight: 300;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btnLogin {
+    background-color: var(--background-color);
+    color: var(--tertiary-color);
+    border-radius: 4px ;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+
+  .btnLogin:hover {
+    color: var(--background-color);
+    background-color: var(--secondary-color);
+
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .authComponent {
+    padding: 0;
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: row;
+    background-color: var(--background-color);
+  }
+
+  .authWrapper {
+    gap:0;
+    padding:0  100px;
+  }
+
+  .authComponentBgImage,
+  .authWrapper {
+    flex: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formContainer {
+    gap: 25px;
+  }
+
+  .authComponentBgImage {
+    display: flex;
+    position: relative;
+    background-color: var(--background-color);
+  }
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}
