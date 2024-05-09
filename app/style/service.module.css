@@ -107,7 +107,7 @@
     align-items: center;
     justify-content: center;
     color: var(--background-color);
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
   }
 
   .motivationAds h1 {
@@ -118,6 +118,7 @@
 
   .patternImage {
     height: 100%;
+    opacity: 50%;
   }
 }
 
