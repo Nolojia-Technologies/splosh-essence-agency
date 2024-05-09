@@ -11,6 +11,8 @@ import { useAuthStore } from "@/app/store/Auth";
 import { useCartStore } from "@/app/store/Cart";
 import styles from "@/app/style/navbar.module.css";
 import DropdownLink from "@/app/components/DropdownLink";
+import GameDropdownLink from "@/app/components/GameDropdownLink";
+
 import {
   UsersIcon,
   ShoppingBagIcon,
@@ -107,7 +109,7 @@ export default function Navbar() {
             About us
           </Link>
           <DropdownLink
-            dropPlaceHolder="Collections"
+            dropPlaceHolder="Products"
           />
           <Link
             href="/page/service"
@@ -115,19 +117,19 @@ export default function Navbar() {
               pathname === "/page/service" ? styles.activeLink : ""
             }`}
           >
-            Service
+            Services
           </Link>
-          <DropdownLink
-            dropPlaceHolder="Promotions"
-          />
-             <Link
-            href="/page/games"
+          <Link
+            href="/page/promotions"
             className={`${styles.LinkContainer} ${
-              pathname === "/page/games" ? styles.activeLink : ""
+              pathname === "/page/promotions" ? styles.activeLink : ""
             }`}
           >
-            Service
+            promotions
           </Link>
+          <GameDropdownLink
+            dropPlaceHolder="games"
+          />
           <Link
             href="/page/contact"
             className={`${styles.LinkContainer} ${

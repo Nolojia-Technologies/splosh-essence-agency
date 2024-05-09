@@ -6,7 +6,7 @@
       --tertiary-light: #cf493d;
       --secondary-color: #63c763;
       --background-color: #ffffff;
-      --background-color-light: #f2f2f2;
+      --background-light: #f7f8f9ff;
       --profile-shadow:  rgba(0, 0, 0, 0.04) 0px 3px 5px;
       --background-shadow:  rgba(171, 174, 177, 0.2) 0px 8px 24px;
   
@@ -26,6 +26,7 @@
     body {
       font-weight: 300;
       color: var(--primary-color);
+      background-color: var(--background-color);
     }
   
     a,

@@ -7,6 +7,8 @@ import AboutPage from "@/app/page/about/page";
 import styles from "@/app/style/home.module.css";
 import ServicePage from "@/app/page/service/page";
 import FooterPage from "@/app/components/Footer";
+import ProductPage from "@/app/page/product/page";
+import TestimonialPage from "@/app/page/testimonial/page";
 import { ChevronRightIcon as RightIcon, ChevronLeftIcon as LeftIcon } from "@heroicons/react/24/outline";
 
 export default function HomePage() {
@@ -91,6 +93,8 @@ export default function HomePage() {
       <div>
       <AboutPage/>
       <ServicePage/>
+      <ProductPage/>
+      <TestimonialPage/>
       <FooterPage/>
       </div>
    

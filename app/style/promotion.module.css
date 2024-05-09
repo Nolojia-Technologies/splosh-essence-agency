@@ -1,0 +1,104 @@
+@media screen {
+  .promotionContainer {
+    gap: 30px;
+    display: flex;
+    padding: 40px 10px;
+    flex-direction: column;
+   
+  }
+
+  .promotionContainerInner {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promotionCardHeader {
+    gap: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .promotionCardHeader h4 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--tertiary-color);
+  }
+
+  .promotionCardHeader h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .promotionCard {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    min-width: 300px;
+    flex-direction: column;
+    transform: translateY(0);
+
+  }
+
+  .promotionCardImgSection {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    position: relative;
+    justify-content: end;
+    flex-direction: column;
+    background-color: var(--light-color);
+  }
+
+
+  .promotionCardImage {
+    object-position: center;
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+
+  .promotionCardInfo {
+    gap: 10px;
+    display: flex;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: capitalize;
+  }
+
+
+  .promotionCardInfo h1 {
+    font-size: 1rem;
+    
+  }
+
+
+
+
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .promotionContainer {
+    height: 100%;
+    
+
+  }
+
+  .promotionContainerInner {
+    padding: 40px;
+  }
+
+  .promotionCard {
+    width: 350px;
+  }
+}
