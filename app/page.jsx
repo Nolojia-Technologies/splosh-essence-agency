@@ -4,10 +4,10 @@ import toast from "react-hot-toast";
 import NavBar from "@/app/components/NavBar";
 import { useEffect, useState } from "react";
 import AboutPage from "@/app/page/about/page";
+import FooterPage from "@/app/components/Footer";
 import styles from "@/app/style/home.module.css";
 import ServicePage from "@/app/page/service/page";
-import FooterPage from "@/app/components/Footer";
-import ProductPage from "@/app/page/product/page";
+import ProductPage from "@/app/page/product/[slug]/page";
 import TestimonialPage from "@/app/page/testimonial/page";
 import { ChevronRightIcon as RightIcon, ChevronLeftIcon as LeftIcon } from "@heroicons/react/24/outline";
 

@@ -31,10 +31,9 @@
     top: 70px;
     display: flex;
     padding: 10px;
+    width: fit-content;
     position: absolute;
     flex-direction: row;
-     overflow: hidden;
-    overflow-x: auto;
     color: var(--primary-color);  
     justify-content: space-between;
     box-shadow: var(--background-shadow);
@@ -44,6 +43,7 @@
   .dropdownNavMiddle {
     gap: 20px;
     display: flex;
+    flex-direction: column;
   }
 
   .dropdownLinkContainer {
@@ -54,14 +54,6 @@
     color: var(--primary-color);
   }
 
-  .advertImg {
-    width: 260px;
-    height: 260px;
-    object-fit: cover;
-    object-position: center;
-    -o-object-position: center;
-
-  }
 
 
   .LinkContain {

@@ -16,7 +16,7 @@
     object-position: center;
     position: relative;
     object-fit: cover;
-    height: 84vh;
+    height: 100vh;
   }
 
   .advertImage {
@@ -29,7 +29,6 @@
     z-index: 20;
     height: 100%;
     display: flex;
-    padding: 10px;
     position: absolute;
     align-items: center;
     justify-content: space-between;
@@ -41,7 +40,7 @@
     z-index: 10;
     height: 100%;
     display: flex;
-    padding: 100px;
+    padding: 12%;
     position: absolute;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +48,7 @@
   }
 
   .heroSpan  {
-    padding: 10px 40px;
+    padding: 10px 20px;
     border-radius: 12px;
     width: fit-content;
     color: var(--background-color);
@@ -62,7 +61,7 @@
   }
 
   .heroInfo h1 {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 
   .heroInfo p {
@@ -70,8 +69,8 @@
   }
 
   .heroCircle {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -123,18 +122,56 @@
   .homeContainer {
     gap: 0;
   }
+
+  .heroInfo {
+    padding: 4%;
+  }
+
+  .heroInfo h1 {
+    font-size: 2.4rem;
+  }
+
+  .heroInfo p {
+    font-size: 1.2rem;
+  }
+
+
+  .heroController {
+    padding: 10px;
+  }
+
+  .heroCircle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .heroSpan  {
+    padding: 10px 40px;
+  }
   }
 
 
 /* ipad pro screens & laptop */
 @media only screen and (min-width: 49em) and (max-width: 64em) {
+ 
+
 }
 
 /* large screens : Desktop and 4k screens */
 
 @media only screen and (min-width: 64.063em) and (max-width: 90em) {
+
 }
 
 /* 5k screens and above */
 @media only screen and (min-width: 91em) {
+  .heroInfo h1 {
+    font-size: 2.8rem;
+  }
+
+  .heroInfo p {
+    font-size: 2rem;
+  }
+
+  
 }

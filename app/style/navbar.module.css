@@ -1,17 +1,29 @@
 @media screen {
+
+  .containerNav {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color: var(--background-color);
+
+  }
+
   .NavContainer {
-    height: 80px;
+    top: 0;
+    height: 60px;
     display: flex;
     padding: 10px;
+    width: 100%;
     position: relative;
     align-items: center;
+    justify-content: end;
     color: var(--background-color);
-    justify-content: space-between;
     background-color: var(--tertiary-color);
   }
 
   .containerNavTop {
-    height: 70px;
+    height: 50px;
     display: flex;
     padding-left: 10px;
     justify-content: space-between;
@@ -19,7 +31,7 @@
 
   .logo {
     height:auto;
-    width: 70px;
+    width: 50px;
   }
 
   .containerNavTopWrapper {
@@ -29,13 +41,15 @@
 
   .containerTopInn{
     gap: 10px;
-    width: 180px;
+    width: 70px;
     height: 100%;
     display: flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
   }
+
+  
 
   .topIcon {
     color: var(--tertiary-color);
@@ -51,7 +65,7 @@
 
   .containerTopInnActive{
     gap: 10px;
-    width: 180px;
+    width: 70px;
     height: 100%;
     display: flex;
     cursor: pointer;
@@ -71,6 +85,7 @@
   }
 
   .containerTopInn h1 {
+    display: none;
     font-size: 1rem;
     font-weight: 400;
     color: var(--tertiary-color);
@@ -263,9 +278,31 @@
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {
+  .NavContainer {
+    height: 80px;
+    justify-content: space-between;
+  }
+  
   .NavMiddle {
     display: flex;
   }
+
+  .containerNavTop {
+    height: 70px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .containerTopInn h1 {
+    display: flex;
+  }
+
+  .containerTopInn , .containerTopInnActive {
+    width: 180px;
+  }
+  
 }
 
 /* ipad pro screens & laptop */

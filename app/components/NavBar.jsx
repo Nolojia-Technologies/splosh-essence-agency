@@ -143,7 +143,7 @@ export default function Navbar() {
           onClick={() => toggleShow()}
           className={styles.menuIcon}
           alt="Menu icon"
-          width={50}
+          width={40}
         />
         {/* side nav  */}
       </div>
