@@ -1,7 +1,7 @@
 "use client";
 import styles from "@/app/style/manage.module.css";
 
-i
+
 
 export default function ManagePage() {
   

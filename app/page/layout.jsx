@@ -1,7 +1,6 @@
 import NavBar from "@/app/components/NavBar";
 import Contact from "@/app/components/Footer";
 import styles from "@/app/style/pageLayout.module.css";
-import AcceptCookies from "@/app/components/AcceptCookies";
 
 export default function PageLayout({ children }) {
   return (
@@ -9,7 +8,6 @@ export default function PageLayout({ children }) {
       <NavBar />
       {children}
       <Contact />
-      <AcceptCookies/>
     </div>
   );
 }

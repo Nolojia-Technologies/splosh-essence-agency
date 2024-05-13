@@ -50,7 +50,7 @@ export default function HomePage() {
     return () => {
       clearInterval(interval);
     };
-  }, [currentImageIndex]);
+  },);
 
   return (
     <div className={styles.homeContainer}>
