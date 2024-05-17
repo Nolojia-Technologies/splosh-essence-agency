@@ -42,7 +42,7 @@ export default function PromotionPage() {
   return (
     <div className={styles.promotionContainer}>
       <div className={styles.promotionCardHeader}>
-        <h4>Avdertise your promotion easily with us today</h4>
+        <h4>Advertise your promotion easily with us today</h4>
         <h1>Promotions</h1>
       </div>
       <div  className={styles.promotionContainerInner}>

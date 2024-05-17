@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={Inria.className}>
         <Toaster
-          position="top-left"
+          position="top-right"
           reverseOrder={false}
           gutter={8}
           containerClassName=""
@@ -66,8 +66,8 @@ export default function RootLayout({ children }) {
             className: "",
             duration: 8000,
             style: {
-              background: "#ffff",
-              color: "#5CB85C",
+              background: "#191919",
+              color: "#ffffffff",
             },
           }}
         />

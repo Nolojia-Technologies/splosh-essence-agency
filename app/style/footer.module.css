@@ -5,7 +5,7 @@
     font-weight: 300;
     flex-direction: column;
     color: var(--background-color);
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
   }
 
     .contactWrapper {
@@ -50,10 +50,11 @@
     .contactIconsP {
       padding: 10px;
       display: flex;
+      cursor: pointer;
       border-radius: 12px;
       align-items: center;
       flex-direction: column;
-      border: 1px solid var(--background-color);
+      background-color: var(--tertiary-light);
 
     }
 
@@ -102,7 +103,8 @@
       align-items: center;
       justify-content: center;
       color: var(--background-color);
-      background-color: var(--tertiary-color);
+      background-color: var(--primary-color);
+
     }
 
     .footerContainer h4 {

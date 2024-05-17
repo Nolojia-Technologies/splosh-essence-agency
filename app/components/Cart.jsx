@@ -75,7 +75,6 @@ export default function Cart() {
   };
 
   const checkOut = () => {
-    // Add checkout logic here
     toast.success("Checkout successful!");
   };
 

@@ -1,14 +1,14 @@
 @media screen {
 
   .containerNav {
-    top: 0;
-    width: 100%;
-    position: fixed;
-    z-index: 100;
-    background-color: var(--background-color);
-
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0; 
+    background-color: var(--background-color); 
+    z-index: 1000; 
   }
 
+  
   .NavContainer {
     top: 0;
     height: 60px;
@@ -274,7 +274,7 @@
   .activeLink {
     color: var(--primary-color);
   }
-}
+} 
 
 /* using it as global style for larger devices  */
 @media only screen and (min-width: 48em) {

@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
+    "chart.js": "^4.4.2",
     "next": "^14.2.3",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-custom-roulette": "^1.4.1",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "zustand": "^4.5.1"

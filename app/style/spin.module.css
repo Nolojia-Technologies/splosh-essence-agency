@@ -1,0 +1,86 @@
+@media screen {
+
+  .containerSpin {
+    right: 0;
+    gap: 10px;
+    top: 80vh;
+    z-index: 100;
+    padding: 10px;
+    display: flex;
+    position: fixed;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+    
+  }
+
+  .containerSpin h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+  }
+
+  .containerSpin p {
+    font-size: 1rem;
+  }
+
+  .spinImage {
+    height: 70px;
+    width: auto;
+  }
+
+  .containerSpin .spinImage {
+    transition: transform 0.3s ease; 
+  }
+  
+  .containerSpin:hover .spinImage {
+    animation: spinAnimation 2s infinite linear; 
+  }
+  
+  @keyframes spinAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+  }
+
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+  
+  .containerSpin h1 {
+    font-size: 1.5rem;
+
+  }
+
+  .containerSpin p {
+    font-size: 1.2rem;
+  }
+
+  .spinImage {
+    height: 100px;
+    width: auto;
+  }
+
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+
+
+  
+}

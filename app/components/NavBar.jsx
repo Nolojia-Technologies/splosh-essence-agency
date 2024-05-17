@@ -131,10 +131,8 @@ export default function Navbar() {
             dropPlaceHolder="games"
           />
           <Link
-            href="/page/contact"
-            className={`${styles.LinkContainer} ${
-              pathname === "/page/contact" ? styles.activeLink : ""
-            }`}
+            href="#footer"
+            className={styles.LinkContainer}
           >
             Contact
           </Link>

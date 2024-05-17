@@ -23,7 +23,7 @@ export default function FooterPage() {
 
   const openWhatsapp = () => {
     window.open(
-      "https://wa.me/+1(484)744-0421?text=Hi welcome to Splosh Essence Agency",
+      "https://wa.me/+254764703719?text=Hi welcome to Splosh Essence Agency",
       "_blank"
     );
   };
@@ -52,7 +52,7 @@ export default function FooterPage() {
   };
 
   return (
-    <div className={styles.contactContainer}>
+    <div className={styles.contactContainer} id="footer">
       <div className={styles.contactWrapper}>
         <div className={styles.contactPart}>
           <Image
@@ -167,6 +167,15 @@ export default function FooterPage() {
         <div className={styles.contactPart}>
           <h1>contact</h1>
           <div className={styles.contactInfoWrapper}>
+          <div className={styles.contactInfo}>
+              <PhoneIcon
+                className={styles.arrowIcon}
+                alt="phone icon"
+                width={24}
+                height={24}
+              />
+              <h4>+254764703719</h4>
+            </div>
             <div className={styles.contactInfo}>
               <LocationIcon
                 className={styles.arrowIcon}
@@ -174,16 +183,7 @@ export default function FooterPage() {
                 width={24}
                 height={24}
               />
-              <h4>Nairobi</h4>
-            </div>
-            <div className={styles.contactInfo}>
-              <PhoneIcon
-                className={styles.arrowIcon}
-                alt="phone icon"
-                width={24}
-                height={24}
-              />
-              <h4>+254</h4>
+              <h4>Lavington Nairobi</h4>
             </div>
             <div className={styles.contactInfo}>
               <MailIcon

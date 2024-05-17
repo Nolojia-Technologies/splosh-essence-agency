@@ -1,11 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import FoodImg from "@/public/assets/food.jpg";
-import FunitureImg from "@/public/assets/funiture.jpg";
-import KitchenImg from "@/public/assets/kitchen.jpg";
-import StationaryImg from "@/public/assets/stationary.jpg";
 import styles from "@/app/style/GameDropdownLink.module.css";
 import {
   ChevronDownIcon as DropdownIcon,
@@ -13,14 +8,15 @@ import {
 } from "@heroicons/react/24/outline";
 
 const dropdownLinks = [
-  {
-    name: "Spin Wheel",
-    href: "/page/games/spin",
-  },
+
   {
     name: "Trading",
-    href: "/page/games/trade",
-  }
+    href: "/page/game/trade",
+  },
+  {
+    name: "Spin",
+    href: "/page/game/spin",
+  },
 ];
 
 export default function Dropdown({ dropPlaceHolder }) {
@@ -30,7 +26,9 @@ export default function Dropdown({ dropPlaceHolder }) {
 
   return (
     <div className={styles.dropdownContainer}>
-      <div className={styles.dropdownInput} onClick={() => setIsOpen(!isOpen)}>
+      <div className={`${styles.dropdownInput} ${
+              pathname === "/page/game" ? styles.active : ""
+            }`} onClick={() => setIsOpen(!isOpen)}>
         <h1>{selectedOption || dropPlaceHolder}</h1>
         {isOpen ? (
           <DropdownIcon className={styles.dropdownIcon} alt="Dropdown icon" height={16} />

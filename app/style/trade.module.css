@@ -1,32 +1,27 @@
 @media screen {
- .cookieContainer {
-  width: 100%;
+.tradingContainer {
+  gap: 10px;
+  padding: 10px;
   display: flex;
-  z-index: 9999;
-  align-items: center;
-  background-color: var(--background-color);
- }
+  flex-direction: column;
+}
 
- .cookieContainer h1 {
-  color: var();
- }
-  }
+.tradingContainer h1 {
+  font-size: 1.2rem;
+}
 
+
+}
 
 /* ipad pro screens & laptop */
 @media only screen and (min-width: 49em) and (max-width: 64em) {
- 
-
 }
 
 /* large screens : Desktop and 4k screens */
 
 @media only screen and (min-width: 64.063em) and (max-width: 90em) {
-
 }
 
 /* 5k screens and above */
 @media only screen and (min-width: 91em) {
-
-  
 }
