@@ -1,7 +1,7 @@
 "use client";
 import toast from "react-hot-toast";
+import Wheel from '@/app/components/Wheel';
 import { useState, useEffect } from "react";
-import { Wheel } from "react-custom-roulette";
 import styles from "@/app/style/spinwheel.module.css";
 
 const data = [
