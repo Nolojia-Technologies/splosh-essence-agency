@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 import logo from "@/public/assets/logo.png";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
@@ -10,26 +11,29 @@ import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 
 import {
+  PhoneIcon,
   KeyIcon as PasswordIcon,
   UserIcon as UserNameIcon,
   EyeIcon as ShowPasswordIcon,
-  BriefcaseIcon as BusinessIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
 
 export default function SignUp() {
-  const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
-  const [terms, setTerms] = useState(false);
-  const [role, setRole] = useState("Business"); 
+  const { toggleAuth } = useAuthStore();
+  const pathname = usePathname();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phoneNumber: "",
+  });
+  const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
   const router = useRouter();
-
-  const handleTermsChange = (event) => {
-    setTerms(event.target.checked);
-  };
 
   const toggleConfirmPassword = () => {
     setConfirmPassword(!showConfirmPassword);
@@ -39,43 +43,54 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
 
-  const policy = () => {
-    router.push("/page/policy", { scroll: false });
-  };
-
-  const readTerms = () => {
-    router.push("/page/terms", { scroll: false });
-  };
-
-  const forgotPassword = () => {
-    router.push("forgot", { scroll: false });
-  };
-
-  const Login = () => {
-    router.push("login", { scroll: false });
-  };
-
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const formData = new FormData(e.currentTarget);
-      // const response = await fetch("/api/submit", {
-      //   method: "POST",
-      //   body: formData,
-      // });
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Password does not match");
+      setIsLoading(false);
+      return;
+    }
 
-      toggleAuth('ssiahis', role); 
-      toast.success("Welcome");
+    try {
+      const response = await fetch(`${SERVER_API}/user/register`, {
+        method: "POST",
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          phoneNumber: formData.phoneNumber,
+          isAgent: pathname.includes("/agent"),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const token = data.token;
+      const role = data.role;
+      localStorage.setItem("token", token);
+      toggleAuth(role, role);
+      toast.success("Account created successfully!");
       router.push("/page/home", { scroll: false });
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phoneNumber: "",
+      });
     } catch (error) {
-      console.error(error);
-      toast.error("Sign up failed");
+      toast.error("Invalid credentials");
     } finally {
       setIsLoading(false);
     }
   }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={styles.authComponent}>
@@ -94,7 +109,6 @@ export default function SignUp() {
             <p>Enter account details</p>
           </div>
           {/* Username */}
-
           <div className={styles.authInput}>
             <UserNameIcon
               className={styles.authIcon}
@@ -105,12 +119,28 @@ export default function SignUp() {
             <input
               type="text"
               name="username"
-              id="username"
               placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
             />
           </div>
-          {/*  password */}
-
+          {/* Email */}
+          <div className={styles.authInput}>
+            <UserNameIcon
+              className={styles.authIcon}
+              alt="Email icon"
+              width={20}
+              height={20}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          {/*  Password */}
           <div className={styles.authInput}>
             <PasswordIcon
               className={styles.authIcon}
@@ -120,9 +150,10 @@ export default function SignUp() {
             />
             <input
               type={showPassword ? "text" : "password"}
-              name="Password"
-              id="Password"
+              name="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
             />
             <button
               type="button"
@@ -144,8 +175,7 @@ export default function SignUp() {
               )}
             </button>
           </div>
-          {/* confirm password */}
-
+          {/* Confirm Password */}
           <div className={styles.authInput}>
             <PasswordIcon
               className={styles.authIcon}
@@ -156,8 +186,9 @@ export default function SignUp() {
             <input
               type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
-              id="confirmPassword"
               placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
             />
             <button
               type="button"
@@ -179,18 +210,21 @@ export default function SignUp() {
               )}
             </button>
           </div>
-        
-          <div className={styles.formChange}>
-            <div className={styles.termsContainer}>
-              <input
-                type="checkbox"
-                id="terms"
-                checked={terms}
-                onChange={handleTermsChange}
-              />
-              <label htmlFor="terms">Accept terms and condition</label>
-            </div>
-            <span onClick={forgotPassword}>Forgot Password</span>
+          {/* Phone Number */}
+          <div className={styles.authInput}>
+            <PhoneIcon
+              className={styles.authIcon}
+              alt="Phone Number icon"
+              width={20}
+              height={20}
+            />
+            <input
+              type="tel"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+            />
           </div>
           <div className={styles.authBottomBtn}>
             <button
@@ -200,17 +234,7 @@ export default function SignUp() {
             >
               {isLoading ? <Loader /> : "Sign up"}
             </button>
-            <p>
-              <span onClick={readTerms}>Terms and Condition</span> &{" "}
-              <span onClick={policy}> Privacy Policy</span>{" "}
-            </p>
           </div>
-          <h3>
-            Already have an account?{" "}
-            <div className={styles.btnLogin} onClick={Login}>
-              Login
-            </div>
-          </h3>
         </form>
       </div>
     </div>

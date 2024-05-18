@@ -41,7 +41,7 @@ export default function SignUp() {
   };
 
   const SignUp = () => {
-    router.push("signup", { scroll: false });
+    router.push("signup/user", { scroll: false });
   };
 
   async function onSubmit(e) {

@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-   
+    SERVER_API: 'https://splosh-server.onrender.com/api/v1/',
   },
   images: {
     remotePatterns: [

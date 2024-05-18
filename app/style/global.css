@@ -1,13 +1,13 @@
 @media screen {
     * {
       /* dynamic style */
-      --primary-color: #191919;
-      --primary-light: #464646;
-      --tertiary-color: #F04444;
-      --tertiary-light: #f36868;
-      --secondary-color: #2B2B2B;
-      --background-color: #ffffff;
-      --background-light: #f7f8f9ff;
+      --primary-color: #011627;
+      --primary-light: #022b4d;
+      --tertiary-color: #e71d36;
+      --tertiary-light: #e93f52;
+      --secondary-color: #fdb248;
+      --background-color: #fdfffc;
+      --background-light: #f2f5f1;
       --profile-shadow:  rgba(0, 0, 0, 0.04) 0px 3px 5px;
       --background-shadow:  rgba(171, 174, 177, 0.2) 0px 8px 24px;
   
