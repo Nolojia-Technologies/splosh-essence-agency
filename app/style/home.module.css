@@ -21,6 +21,7 @@
 
   .advertImage {
     z-index: -100;
+    object-fit: cover;
     filter: brightness(0.6);
   }
 

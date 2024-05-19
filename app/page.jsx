@@ -69,9 +69,8 @@ export default function HomePage() {
           className={styles.advertImage}
           src={data[currentImageIndex].image}
           alt="Hero Image"
-          layout="fill"
+          fill
           quality={100}
-          objectFit="cover"
           priority
         />
         <div className={styles.heroController}>

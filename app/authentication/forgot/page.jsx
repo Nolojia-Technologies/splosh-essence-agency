@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
 import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
+import BackBtn from "@/app/components/BackButton";
 
 import {
   EnvelopeIcon as EmailIcon,
@@ -54,6 +55,7 @@ export default function Forgot() {
 
   return (
     <div className={styles.authComponent}>
+      <BackBtn/>
       <div className={styles.authComponentBgImage}>
         <Image
           src={logo}

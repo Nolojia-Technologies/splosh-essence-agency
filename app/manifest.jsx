@@ -1,7 +1,7 @@
 export default function manifest() {
   return {
-    name: 'SploshEssenceAgency',
-    short_name: 'SploshEssenceAgency',
+    name: 'SploshEssence',
+    short_name: 'SploshEssence',
     description: 'Get deals and brand promotions , apps and website with us easily and earn as an agent by doing promotions & refferals ',
     start_url: '/',
     display: 'standalone',

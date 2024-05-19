@@ -5,14 +5,14 @@ import "@/app/style/global.css";
 const Inria = Inria_Serif({ weight: "300", subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://SploshEssenceAgency.vercel.app"),
+  metadataBase: new URL("https://sploshessence.com/"),
   title: "SploshEssenceAgency",
   applicationName: "SploshEssenceAgency",
   author: "SploshEssenceAgency",
-  images: "https://raw.githubusercontent.com/zero-stealth/SploshEssenceAgency/master/public/assets/banner.png",
+  images: "https://raw.githubusercontent.com/Nolojia-Technologies/splosh-essence-agency/main/public/assets/banner.png",
   description:
     "Get deals and brand promotions , apps and website with us easily and earn as an agent by doing promotions & refferals ",
-    metadataBase: new URL("https://SploshEssenceAgency.vercel.app"),
+    metadataBase: new URL("https://sploshessence.com/"),
     keywords: [
     "brand promotion",
     "earn",
@@ -31,9 +31,9 @@ export const metadata = {
     title: "SploshEssenceAgency",
     description:
       "Get deals and brand promotions , apps and website with us easily and earn as an agent by doing promotions & refferals ",
-    url: "https://SploshEssenceAgency.vercel.app/",
+    url: "https://sploshessence.com//",
     siteName: "SploshEssenceAgency",
-    images: "https://raw.githubusercontent.com/zero-stealth/SploshEssenceAgency/master/public/assets/banner.png",
+    images: "https://raw.githubusercontent.com/Nolojia-Technologies/splosh-essence-agency/main/public/assets/banner.png",
   },
   robots: {
     index: false,

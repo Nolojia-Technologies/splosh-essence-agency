@@ -80,7 +80,7 @@ export default function Cart() {
 
   useEffect(() => {
     calculateTotal();
-  }, [cartData]);
+  });
 
   return (
     <div

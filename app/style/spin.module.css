@@ -18,13 +18,13 @@
   }
 
   .containerSpin h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
 
   }
 
   .containerSpin p {
-    font-size: 1rem;
+    font-size: .9rem;
   }
 
   .spinImage {
@@ -56,7 +56,7 @@
 /* ipad pro screens & laptop */
 @media only screen and (min-width: 49em) and (max-width: 64em) {
   .containerSpin {
-    top: 60vh;
+    top: 65vh;
   }
   
   .containerSpin h1 {

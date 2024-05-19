@@ -1,0 +1,38 @@
+@media screen {
+  .backBtn {
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px 20px;
+    position: absolute;
+    border-radius: 12px;
+    color: var(--tertiary-color);
+    box-shadow: var(--background-shadow);
+    background-color: var(--background-color);
+  }
+}
+
+/* using it as global style for larger devices  */
+@media only screen and (min-width: 48em) {
+  .backBtn {
+    left: 10px;
+    right: 0;
+  }
+}
+
+/* ipad pro screens & laptop */
+@media only screen and (min-width: 49em) and (max-width: 64em) {
+}
+
+/* large screens : Desktop and 4k screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) {
+}
+
+/* 5k screens and above */
+@media only screen and (min-width: 91em) {
+}
