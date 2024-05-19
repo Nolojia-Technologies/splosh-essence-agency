@@ -10,6 +10,7 @@
       --background-light: #f2f5f1;
       --profile-shadow:  rgba(0, 0, 0, 0.04) 0px 3px 5px;
       --background-shadow:  rgba(171, 174, 177, 0.2) 0px 8px 24px;
+      --cart-line-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   
       margin: 0;
       padding: 0;

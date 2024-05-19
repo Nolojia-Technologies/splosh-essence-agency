@@ -56,11 +56,11 @@
   }
 
   .containerTopInn:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   .containerTopInn:hover .topIcon {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   .containerTopInnActive{
@@ -81,7 +81,7 @@
 
   
   .containerTopInnActive:hover .topIcon   {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   .containerTopInn h1 {
@@ -92,7 +92,7 @@
   }
 
   .containerTopInn:hover h1 {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   .menuIcon {
@@ -100,7 +100,7 @@
   }
 
   .menuIcon:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   .NavMiddle {
@@ -118,7 +118,7 @@
   }
 
   .LinkContainer:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     
   }
 
@@ -211,7 +211,7 @@
 
   .profileLogin:hover {
     color: var(--background-color);
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
   }
 
   .profileLogin:hover h1 {
@@ -260,7 +260,7 @@
     padding: 12px;
     display: flex;
     align-items: center;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     justify-content: space-between;
     box-shadow: var(--profile-shadow);
     background-color: var(--profile-color);
@@ -272,7 +272,7 @@
   }
 
   .activeLink {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 } 
 

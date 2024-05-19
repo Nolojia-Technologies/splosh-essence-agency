@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
 import { useCartStore } from "@/app/store/Cart";
-import styles from "@/app/style/navbar.module.css";
+import styles from "@/app/style/cart.module.css";
 import {
   MinusIcon,
   PlusIcon as AddIcon,
@@ -18,7 +17,6 @@ import {
 
 export default function Cart() {
   const router = useRouter();
-  const { toggleCart } = useCartStore();
   const [cartData, setCartData] = useState([
     {
       id: 1,
@@ -36,9 +34,10 @@ export default function Cart() {
       previousPrice: 5000,
       DeliveryFee: 100,
     },
-  ]);
 
+  ]);
   const [TotalPrice, setTotalPrice] = useState(0);
+  const { toggleCart, isCartOpen } = useCartStore();
   const [TotalDelivery, setTotalDelivery] = useState(0);
 
   const calculateTotal = () => {
@@ -56,6 +55,7 @@ export default function Cart() {
     const updatedCart = cartData.filter((item) => item.id !== id);
     setCartData(updatedCart);
     calculateTotal();
+    toast.success("item deleted");
   };
 
   const add = (index) => {
@@ -83,63 +83,81 @@ export default function Cart() {
   }, [cartData]);
 
   return (
-    <div className={styles.cartContainer}>
+    <div
+      className={`${styles.sideNav} ${
+        isCartOpen === true ? styles.sideSlide : ""
+      }`}
+    >
       <div className={styles.cartNav}>
-        <BackIcon className={styles.backIcon} height={24} />
-        <h1>MyCart</h1>
+        <div onClick={() => toggleCart()}>
+          <BackIcon className={styles.backIcon} height={24} />
+        </div>
+        <h1>My Cart</h1>
         <ShoppingIcon className={styles.cartIcon} height={24} />
       </div>
       <div className={styles.cartContent}>
-        {cartData.map((data, index) => (
-          <div className={styles.cartCard} key={index}>
-            <Image
-              className={styles.cartImg}
-              src={data.image}
-              alt="Image"
-              priority
-            />
-            <div
-              className={styles.cardDelete}
-              onClick={() => DeleteCart(data.id)}
-            >
-              <DeleteTcon className={styles.cartDelete} height={24} />
-            </div>
-            <div className={styles.cartModify}>
-              <div
-                className={styles.cartModifyContain}
-                onClick={() => add(index)}
-              >
-                <AddIcon className={styles.cartAdd} height={18} />
+        {cartData.length > 0 ? (
+          cartData.map((data, index) => (
+            <div className={styles.cartCard} key={index}>
+              <Image
+                className={styles.cartImg}
+                src={data.image}
+                alt="Image"
+                width={100}
+                height={100}
+                priority
+              />
+              <div className={styles.cartContainInfo}>
+                <h1>{data.name}</h1>
+                <p>{data.price} ksh</p>
+                <div className={styles.cartModify}>
+                  <div
+                    className={styles.cartModifyContain}
+                    onClick={() => add(index)}
+                  >
+                    <AddIcon className={styles.cartAdd} height={18} />
+                  </div>
+                  <div
+                    className={styles.cartModifyContain}
+                    onClick={() => minus(index)}
+                  >
+                    <MinusIcon className={styles.cartMinus} height={18} />
+                  </div>
+                  <div
+                    className={styles.cardDelete}
+                    onClick={() => DeleteCart(data.id)}
+                  >
+                    <DeleteTcon className={styles.cartDeleteIcon} height={24} />
+                  </div>
+                </div>
               </div>
-              <div
-                className={styles.cartModifyContain}
-                onClick={() => minus(index)}
-              >
-                <MinusIcon className={styles.cartMinus} height={18} />
-              </div>
             </div>
+          ))
+        ) : (
+          <div className={styles.cartEmpty}>
+          <h1>Cart empty</h1>
           </div>
-        ))}
+        )}
       </div>
       <div className={styles.cartFooter}>
         <div className={styles.cartFooterItem}>
           <div className={styles.cartItem}>
             <h1>Delivery Fee:</h1>
-            <h2>ksh {TotalDelivery}</h2>
+            <h2> {TotalDelivery} ksh</h2>
           </div>
           <div className={styles.cartItem}>
             <h1>Subtotal:</h1>
-            <h2>ksh {TotalPrice}</h2>
+            <h2> {TotalPrice} ksh</h2>
           </div>
           <div className={styles.cartItem}>
             <h1>Total:</h1>
-            <h2>ksh {TotalPrice + TotalDelivery}</h2>
+            <h2> {TotalPrice + TotalDelivery} ksh</h2>
           </div>
         </div>
         <button className={styles.checkOutBtn} onClick={() => checkOut()}>
-          Checkout <CheckOutIcon className={styles.checkIcon} height={24} />
+          Checkout <CheckOutIcon className={styles.checkIcon} height={18} />
         </button>
-        <span onClick={() => toggleCart}>Continue shopping</span>
+        <span onClick={() => toggleCart()}>Continue shopping</span>
       </div>
     </div>
   );

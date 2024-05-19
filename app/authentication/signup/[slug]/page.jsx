@@ -82,7 +82,11 @@ export default function SignUp() {
         phoneNumber: "",
       });
     } catch (error) {
-      toast.error("Invalid credentials");
+      if (error.status == 400) {
+        toast.error(error.message);
+      } else {
+        toast.error("invalid credentials");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -137,6 +141,22 @@ export default function SignUp() {
               name="email"
               placeholder="Email"
               value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          {/* Phone Number */}
+          <div className={styles.authInput}>
+            <PhoneIcon
+              className={styles.authIcon}
+              alt="Phone Number icon"
+              width={20}
+              height={20}
+            />
+            <input
+              type="tel"
+              name="phoneNumber"
+              placeholder="Phone Number"
+              value={formData.phoneNumber}
               onChange={handleChange}
             />
           </div>
@@ -209,22 +229,6 @@ export default function SignUp() {
                 />
               )}
             </button>
-          </div>
-          {/* Phone Number */}
-          <div className={styles.authInput}>
-            <PhoneIcon
-              className={styles.authIcon}
-              alt="Phone Number icon"
-              width={20}
-              height={20}
-            />
-            <input
-              type="tel"
-              name="phoneNumber"
-              placeholder="Phone Number"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-            />
           </div>
           <div className={styles.authBottomBtn}>
             <button

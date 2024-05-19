@@ -3,11 +3,11 @@
   .containerSpin {
     right: 0;
     gap: 10px;
-    top: 80vh;
+    top: 70vh;
     z-index: 100;
     padding: 10px;
     display: flex;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     align-items: center;
     flex-direction: column;
@@ -55,6 +55,9 @@
 
 /* ipad pro screens & laptop */
 @media only screen and (min-width: 49em) and (max-width: 64em) {
+  .containerSpin {
+    top: 60vh;
+  }
   
   .containerSpin h1 {
     font-size: 1.5rem;

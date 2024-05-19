@@ -1,6 +1,7 @@
 'use client';
 import Image from "next/image";
 import toast from "react-hot-toast";
+import Cart from "@/app/components/Cart";
 import NavBar from "@/app/components/NavBar";
 import { useEffect, useState } from "react";
 import AboutPage from "@/app/page/about/page";
@@ -56,6 +57,7 @@ export default function HomePage() {
   return (
     <div className={styles.homeContainer}>
       <NavBar />
+      <Cart/>
       <div className={styles.homeWrapper}>
         <Image
           className={styles.advertImage}
@@ -90,9 +92,9 @@ export default function HomePage() {
             ></div>
           ))}
         </div>
+        <SpinWheel/>
       </div>
       <div>
-        <SpinWheel/>
       <AboutPage/>
       <ServicePage/>
       <ProductPage/>

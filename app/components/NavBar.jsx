@@ -25,7 +25,7 @@ import {
 
 export default function Navbar() {
   const router = useRouter();
-  const { toggleCart } = useCartStore();
+  const { toggleCart, isCartOpen } = useCartStore();
   const [show, setShow] = useState(false);
   const { isAuth, role, toggleAuth } = useAuthStore();
   const [profileImg, setProfileImg] = useState(
@@ -80,13 +80,14 @@ export default function Navbar() {
               height={30}
             />
           </div>
-          <div className={styles.containerTopInn} onClick={() => toggleCart}>
+          <div className={styles.containerTopInn} onClick={() => toggleCart()}>
             <ShoppingBagIcon
               className={styles.topIcon}
               alt="shoping icon"
               width={30}
               height={30}
             />
+            {isCartOpen}
           </div>
         </div>
       </div>
@@ -158,7 +159,7 @@ export default function Navbar() {
           />
         </div>
         {isAuth ? (
-          <div className={styles.profileContainer}>
+          <div className={styles.profileContainer}> 
             <Image
               className={styles.profileImg}
               src={profileImg}
