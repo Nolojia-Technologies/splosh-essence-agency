@@ -16,25 +16,31 @@ import { ChevronRightIcon as RightIcon, ChevronLeftIcon as LeftIcon } from "@her
 export default function HomePage() {
   const data = [
     {
-      image: "/assets/hero2.png",
+      image: "/assets/bg1.png",
       title: "Unleash Your Earning Potential",
       description: "Discover a world of opportunities to monetize your skills and passion with our platform.",
     },
     {
-      image: "/assets/hero6.png",
+      image: "/assets/bg2.jpg",
       title: "Boost Your Brand's Visibility",
       description: "Elevate your brand's presence and reach a wider audience through our effective promotion strategies.",
     },
     {
-      image: "/assets/hero7.png",
+      image: "/assets/bg3.jpg",
       title: "Empowering Creators and Entrepreneurs",
       description: "Join our thriving community of creators and entrepreneurs, where your ideas can flourish.",
     },
     {
-      image: "/assets/hero8.png",
+      image: "/assets/bg4.jpg",
       title: "Unlock Your Path to Success",
       description: "Embark on a journey to achieve your goals with our comprehensive suite of tools and resources.",
     },
+    {
+      image: "/assets/bg5.jpg",
+      title: "Get design and programming work ",
+      description: "We can easily create your brand identity and elevate your online presence making your business more accessible",
+    },
+
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

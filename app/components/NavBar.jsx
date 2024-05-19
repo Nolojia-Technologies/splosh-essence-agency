@@ -27,7 +27,7 @@ export default function Navbar() {
   const router = useRouter();
   const { toggleCart, isCartOpen } = useCartStore();
   const [show, setShow] = useState(false);
-  const { isAuth, role, toggleAuth } = useAuthStore();
+  const { isAuth, isAgent, logOut } = useAuthStore();
   const [profileImg, setProfileImg] = useState(
     "https://static.wikia.nocookie.net/p__/images/b/bf/Sung_Jin-Woo_manhwa_render_cool.webp/revision/latest/scale-to-width-down/250?cb=20230918011835&path-prefix=protagonist"
   );
@@ -44,13 +44,10 @@ export default function Navbar() {
     router.push("/authentication/login", { scroll: false });
   };
 
-  const logOut = () => {
-    toast.success("Your logged out");
-  };
 
   const BeAnAgent = (param) => {
     router.push(`/authentication/signup/${param}`, { scroll: true });
-  };  
+  };
 
   return (
     <div className={styles.containerNav}>
@@ -63,7 +60,10 @@ export default function Navbar() {
           priority
         />
         <div className={styles.containerNavTopWrapper}>
-          <div className={styles.containerTopInn}  onClick={() => BeAnAgent("agent")}>
+          <div
+            className={styles.containerTopInn}
+            onClick={() => BeAnAgent("agent")}
+          >
             <UsersIcon
               className={styles.topIcon}
               alt="agent icon"
@@ -109,9 +109,7 @@ export default function Navbar() {
           >
             About us
           </Link>
-          <DropdownLink
-            dropPlaceHolder="Products"
-          />
+          <DropdownLink dropPlaceHolder="Products" />
           <Link
             href="/page/service"
             className={`${styles.LinkContainer} ${
@@ -128,13 +126,28 @@ export default function Navbar() {
           >
             promotions
           </Link>
-          <GameDropdownLink
-            dropPlaceHolder="games"
-          />
-          <Link
-            href="#footer"
-            className={styles.LinkContainer}
-          >
+          <GameDropdownLink dropPlaceHolder="games" />
+          {isAuth === true && (
+            <Link
+              href="/page/wallet"
+              className={`${styles.LinkContainer} ${
+                pathname === "/page/wallet" ? styles.activeLink : ""
+              }`}
+            >
+              wallet
+            </Link>
+          )}
+                  {isAuth === true && isAgent === true && (
+            <Link
+              href="/page/dashboard"
+              className={`${styles.LinkContainer} ${
+                pathname === "/page/dashboard" ? styles.activeLink : ""
+              }`}
+            >
+              dashboard
+            </Link>
+          )}
+          <Link href="#footer" className={styles.LinkContainer}>
             Contact
           </Link>
         </div>
@@ -159,7 +172,7 @@ export default function Navbar() {
           />
         </div>
         {isAuth ? (
-          <div className={styles.profileContainer}> 
+          <div className={styles.profileContainer}>
             <Image
               className={styles.profileImg}
               src={profileImg}
@@ -234,7 +247,6 @@ export default function Navbar() {
             />
           </Link>
 
-              
           <Link
             href="/page/collections"
             className={`${styles.sideLinkContainer} ${
@@ -277,7 +289,7 @@ export default function Navbar() {
               height={20}
             />
           </Link>
-  
+
           <Link
             href="/page/contact"
             className={`${styles.sideLinkContainer} ${

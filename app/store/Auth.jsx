@@ -1,19 +1,19 @@
 import { create } from 'zustand';
+import toast from "react-hot-toast";
 
 export const useAuthStore = create((set) => ({
-  isAuth: false,
-  role: null,
-  token: null,
-  toggleAuth: (token, role) => {
+  isAuth: !!localStorage.getItem('token'),
+  isAgent: localStorage.getItem('isAgent') === 'true',
+  token: localStorage.getItem('token') || null,
+  toggleAuth: (token, isAgent) => {
     localStorage.setItem('token', token);
-    localStorage.setItem('role', role);
-
-    set({ isAuth: true, token, role });
+    localStorage.setItem('isAgent', isAgent.toString());
+    set({ isAuth: true, token, isAgent });
   },
-  logout: () => {
+  logOut: () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('role');
-
-    set({ isAuth: false, token: null, role: 'user' });
+    localStorage.removeItem('isAgent');
+    toast.success("You have logged out")
+    set({ isAuth: false, token: null, isAgent: false });
   },
 }));
