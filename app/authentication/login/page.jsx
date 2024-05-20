@@ -12,71 +12,120 @@ import BackBtn from "@/app/components/BackButton";
 
 import {
   KeyIcon as PasswordIcon,
-  UserIcon as UserNameIcon,
+  UserIcon as emailIcon,
   EyeIcon as ShowPasswordIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
 
-export default function SignUp() {
+export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, toggleAuth } = useAuthStore();
-  const [terms, setTerms] = useState(false);
-
+  const { toggleAuth } = useAuthStore();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const router = useRouter();
-
-  const handleTermsChange = (event) => {
-    setTerms(event.target.checked);
-  };
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const policy = () => {
-    router.push("/page/policy", { scroll: false });
-  };
-
-  const readTerms = () => {
-    router.push("/page/terms", { scroll: false });
-  };
-
   const SignUp = () => {
-    router.push("signup/user", { scroll: false });
+    router.push("/authentication/signup/user", { scroll: false });
   };
+
+  const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
 
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      // const response = await fetch("/api/submit", {
-      //   method: "POST",
-      //   body: formData,
-      // });
-
-      toggleAuth();
-      toast.success("Welcome");
+      const response = await fetch(`${SERVER_API}/user/login`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      const token = data.token;
+      toggleAuth(token);
+      toast.success("Login successful!");
       router.push("/page/home", { scroll: false });
+      localStorage.setItem("username", data.name);
+      toggleAuth(token, pathname.includes("agent"));
+      toast.success("Account created successfully!");
+      router.push("/", { scroll: false });
     } catch (error) {
-      console.error(error);
-      toast.error("Sign up failed");
+      if (error instanceof Object) {
+        toast.error(error.message);
+      } else {
+        toast.error("An error occurred");
+      }
     } finally {
       setIsLoading(false);
+      setFormData({
+        email: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phoneNumber: "",
+      });
     }
   }
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+
+
+const getUserDetails(token) => {
+  try {
+    const response = await fetch(`${SERVER_API}/user/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Bearer": token
+      },
+    });
+    const data = await response.json();
+    const token = data.token;
+    toggleAuth(token);
+    toast.success("Login successful!");
+    router.push("/page/home", { scroll: false });
+    localStorage.setItem("username", data.name);
+    toggleAuth(token, pathname.includes("agent"));
+    toast.success("Account created successfully!");
+    router.push("/", { scroll: false });
+  } catch (error) {
+    if (error instanceof Object) {
+      toast.error(error.message);
+    } else {
+      toast.error("An error occurred");
+    }
+  } finally {
+    setIsLoading(false);
+    setFormData({
+      email: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      phoneNumber: "",
+    });
+  }
+}
+
   return (
     <div className={styles.authComponent}>
-      <BackBtn/>
+      <BackBtn />
       <div className={styles.authComponentBgImage}>
-        <Image
-          src={logo}
-          alt="signup Image"
-          quality="100"
-          objectFit="contain"
-        />
+        <Image src={logo} alt="signup Image" quality="100" />
       </div>
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
@@ -84,23 +133,23 @@ export default function SignUp() {
             <h1>Login</h1>
             <p>Enter your account details</p>
           </div>
-          {/* Username */}
+          {/* email */}
           <div className={styles.authInput}>
-            <UserNameIcon
+            <emailIcon
               className={styles.authIcon}
-              alt="Username icon"
+              alt="email icon"
               width={20}
               height={20}
             />
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              name="email"
+              placeholder="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
           {/*  password */}
-
           <div className={styles.authInput}>
             <PasswordIcon
               className={styles.authIcon}
@@ -110,9 +159,10 @@ export default function SignUp() {
             />
             <input
               type={showPassword ? "text" : "password"}
-              name="Password"
-              id="Password"
+              name="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
             />
             <button
               type="button"
@@ -134,15 +184,6 @@ export default function SignUp() {
               )}
             </button>
           </div>
-          <div className={styles.termsContainer}>
-            <input
-              type="checkbox"
-              id="terms"
-              checked={terms}
-              onChange={handleTermsChange}
-            />
-            <label htmlFor="terms">Accept terms and condition</label>
-          </div>
           <div className={styles.authBottomBtn}>
             <button
               type="submit"
@@ -151,20 +192,14 @@ export default function SignUp() {
             >
               {isLoading ? <Loader /> : "Login"}
             </button>
-            <p>
-              <span onClick={readTerms}>Terms and Condition</span> &{" "}
-              <span onClick={policy}> Privacy Policy</span>{" "}
-            </p>
           </div>
           <h3>
-            Don’t have an account?{" "}
+            Don`t have an account?{" "}
             <div className={styles.btnLogin} onClick={SignUp}>
               Sign up
             </div>
           </h3>
-          </form>
-
-      
+        </form>
       </div>
     </div>
   );

@@ -80,7 +80,6 @@ export default function Reset() {
           src={logo}
           alt="signup Image"
           quality="100"
-          objectFit="contain"
         />
       </div>
       <div className={styles.authWrapper}>

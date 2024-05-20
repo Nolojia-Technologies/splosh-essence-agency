@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/public/assets/logo.png";
 import { usePathname } from "next/navigation";
@@ -33,8 +32,15 @@ export default function Navbar() {
   );
   const [selected, setSelected] = useState([]);
 
-  const [username, setUsername] = useState("Shadow Monarch");
+  const [username, setUsername] = useState("Guest");
   const pathname = usePathname();
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   const toggleShow = () => {
     setShow(!show);

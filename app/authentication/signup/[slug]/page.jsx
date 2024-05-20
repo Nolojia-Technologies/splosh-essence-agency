@@ -44,6 +44,18 @@ export default function SignUp() {
     setShowPassword(!showPassword);
   };
 
+  const policy = () => {
+    router.push("/page/policy", { scroll: false });
+  };
+
+  const readTerms = () => {
+    router.push("/page/terms", { scroll: false });
+  };
+
+  const Login = () => {
+    router.push("/authentication/login", { scroll: false });
+  };
+
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -62,19 +74,35 @@ export default function SignUp() {
           email: formData.email,
           password: formData.password,
           phoneNumber: formData.phoneNumber,
-          isAgent: pathname.includes("/agent"),
+          isAgent: pathname.includes('agent'),
         }),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const data = await response.json();
+      if(data.message) {  
+      toast.success(data.message);
+      return;
+      }
       const token = data.token;
-      const role = data.role;
-      localStorage.setItem("token", token);
-      toggleAuth(role, role);
+      localStorage.setItem('email', formData.email)
+      localStorage.setItem('username', formData.username)
+      localStorage.setItem('phoneNumber', formData.phoneNumber)
+      toggleAuth(token, pathname.includes('agent'));
       toast.success("Account created successfully!");
-      router.push("/page/home", { scroll: false });
+      router.push("/", { scroll: false });
+   
+    } catch (error) {
+      if (error instanceof Object) {
+        toast.error(error.message);
+      } else {
+        toast.error("An error occurred");
+      }
+
+
+    } finally {
+      setIsLoading(false);
       setFormData({
         username: "",
         email: "",
@@ -82,17 +110,8 @@ export default function SignUp() {
         confirmPassword: "",
         phoneNumber: "",
       });
-    } catch (error) {
-      if (error.status == 400) {
-        toast.error(error.message);
-      } else {
-        toast.error("invalid credentials");
-      }
-    } finally {
-      setIsLoading(false);
     }
   }
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -105,7 +124,6 @@ export default function SignUp() {
           src={logo}
           alt="signup Image"
           quality="100"
-          objectFit="contain"
         />
       </div>
       <div className={styles.authWrapper}>
@@ -240,8 +258,18 @@ export default function SignUp() {
             >
               {isLoading ? <Loader /> : "Sign up"}
             </button>
+            <p>
+              <span onClick={readTerms}>Terms and Condition</span> &{" "}
+              <span onClick={policy}> Privacy Policy</span>{" "}
+            </p>
           </div>
-        </form>
+          <h3>
+           Already have an account?{" "}
+            <div className={styles.btnLogin} onClick={Login}>
+              Login
+            </div>
+          </h3>
+          </form>
       </div>
     </div>
   );
