@@ -40,7 +40,7 @@ export default function Login() {
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-
+  
     try {
       const response = await fetch(`${SERVER_API}/user/login`, {
         method: "POST",
@@ -52,15 +52,16 @@ export default function Login() {
           "Content-Type": "application/json",
         },
       });
+  
       const data = await response.json();
       const token = data.token;
+      const _id = data.id;
+  
       toggleAuth(token);
+      getUserDetails(_id, token);
       toast.success("Login successful!");
       router.push("/page/home", { scroll: false });
       localStorage.setItem("username", data.name);
-      toggleAuth(token, pathname.includes("agent"));
-      toast.success("Account created successfully!");
-      router.push("/", { scroll: false });
     } catch (error) {
       if (error instanceof Object) {
         toast.error(error.message);
@@ -71,54 +72,34 @@ export default function Login() {
       setIsLoading(false);
       setFormData({
         email: "",
-        email: "",
         password: "",
-        confirmPassword: "",
-        phoneNumber: "",
       });
     }
   }
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-
-
-const getUserDetails(token) => {
-  try {
-    const response = await fetch(`${SERVER_API}/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Bearer": token
-      },
-    });
-    const data = await response.json();
-    const token = data.token;
-    toggleAuth(token);
-    toast.success("Login successful!");
-    router.push("/page/home", { scroll: false });
-    localStorage.setItem("username", data.name);
-    toggleAuth(token, pathname.includes("agent"));
-    toast.success("Account created successfully!");
-    router.push("/", { scroll: false });
-  } catch (error) {
-    if (error instanceof Object) {
-      toast.error(error.message);
-    } else {
-      toast.error("An error occurred");
+  
+  const getUserDetails = async (id, token) => {
+    try {
+      const response = await fetch(`${SERVER_API}/user/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      const data = await response.json();
+      localStorage.setItem("username", data.name);
+    }  catch (error) {
+      if (error instanceof Object) {
+        toast.error(error.message);
+      } else {
+        toast.error("An error occurred");
+      }
     }
-  } finally {
-    setIsLoading(false);
-    setFormData({
-      email: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      phoneNumber: "",
-    });
-  }
 }
 
   return (

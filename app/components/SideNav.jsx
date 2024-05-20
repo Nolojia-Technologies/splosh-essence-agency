@@ -9,7 +9,7 @@ import Logo from "@/public/assets/logo.png";
 import { usePathname } from "next/navigation";
 import { useAuthStore } from "@/app/store/Auth";
 import { useCartStore } from "@/app/store/Cart";
-import styles from "@/app/style/sideNav.module.css";
+import styles from "@/app/style/sidenav.module.css";
 import DropdownLink from "@/app/components/DropdownLink";
 import GameDropdownLink from "@/app/components/GameDropdownLink";
 

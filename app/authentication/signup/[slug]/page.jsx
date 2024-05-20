@@ -90,8 +90,8 @@ export default function SignUp() {
       localStorage.setItem('username', formData.username)
       localStorage.setItem('phoneNumber', formData.phoneNumber)
       toggleAuth(token, pathname.includes('agent'));
-      toast.success("Account created successfully!");
-      router.push("/", { scroll: false });
+      toast.success("Account created successfully!, check email to verify account");
+      router.push("verify-user/not-verified", { scroll: false });
    
     } catch (error) {
       if (error instanceof Object) {
