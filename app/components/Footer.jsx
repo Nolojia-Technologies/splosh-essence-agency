@@ -192,7 +192,7 @@ export default function FooterPage() {
                 width={24}
                 height={24}
               />
-              <h4>contact@SploshEssenceAgency.com</h4>
+              <h4>sploshessence@gmail.com</h4>
             </div>
           </div>
         </div>

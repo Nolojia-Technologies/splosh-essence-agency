@@ -1,24 +1,20 @@
 "use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useState, useEffect } from "react";
 import logo from "@/public/assets/logo.png";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
 import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 import BackBtn from "@/app/components/BackButton";
-
-import {
-  EnvelopeIcon as EmailIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon as EmailIcon } from "@heroicons/react/24/outline";
 
 export default function Forgot() {
   const [isLoading, setIsLoading] = useState(false);
   const [terms, setTerms] = useState(false);
-
   const router = useRouter();
+
 
   const Login = () => {
     router.push("login", { scroll: false });
@@ -35,19 +31,17 @@ export default function Forgot() {
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-
     try {
       const formData = new FormData(e.currentTarget);
       // const response = await fetch("/api/submit", {
       //   method: "POST",
       //   body: formData,
       // });
-
-      toast.success("check your email for reset link")
+      toast.success("Check your email for reset link");
       router.push("reset", { scroll: false });
     } catch (error) {
       console.error(error);
-      toast.error("reset failed");
+      toast.error("Reset failed");
     } finally {
       setIsLoading(false);
     }
@@ -55,13 +49,9 @@ export default function Forgot() {
 
   return (
     <div className={styles.authComponent}>
-      <BackBtn/>
+      <BackBtn />
       <div className={styles.authComponentBgImage}>
-        <Image
-          src={logo}
-          alt="signup Image"
-          quality="100"
-        />
+        <Image src={logo} alt="signup Image" quality="100" />
       </div>
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
@@ -70,34 +60,19 @@ export default function Forgot() {
             <p>Enter your Email</p>
           </div>
           {/* Email */}
-
           <div className={styles.authInput}>
-            <EmailIcon
-              className={styles.authIcon}
-              alt="Email icon"
-              width={20}
-              height={20}
-            />
-            <input
-              type="text"
-              name="Email"
-              id="Email"
-              placeholder="Email"
-            />
+            <EmailIcon className={styles.authIcon} alt="Email icon" width={20} height={20} />
+            <input type="text" name="Email" id="Email" placeholder="Email" />
           </div>
           <div className={styles.authBottomBtn}>
-               <button
-            type="submit"
-            disabled={isLoading}
-            className={styles.formAuthButton}
-          >
-            {isLoading ? <Loader /> : "Get link"}
-          </button>
-          <p>
+            <button type="submit" disabled={isLoading} className={styles.formAuthButton}>
+              {isLoading ? <Loader /> : "Get link"}
+            </button>
+            <p>
               <span onClick={readTerms}>Terms and Condition</span> &{" "}
-              <span onClick={policy}> Privacy Policy</span>{" "}
+              <span onClick={policy}>Privacy Policy</span>{" "}
             </p>
-          </div> 
+          </div>
           <h3>
             Already have an account?{" "}
             <div className={styles.btnLogin} onClick={Login}>
