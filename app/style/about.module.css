@@ -36,6 +36,25 @@
     flex-direction: column;
   }
 
+  .aboutInfo ul {
+    gap: 5px;
+    display: flex;
+    padding: 10px;
+    border-radius: 12px;
+    flex-direction: column;
+    color: var(--background-color);
+    background-color: var(--tertiary-color);
+  }
+  .aboutInfo ul li {
+    font-size: 1rem;
+    list-style-type: square;
+  }
+
+  .aboutInfo ul li p {
+    font-size: 1.2rem;
+  }
+
+
   .aboutInfo h1 {
     text-align: center;
     font-weight: 400;
@@ -60,7 +79,7 @@
     cursor: pointer;
     font-size: .9rem;
     border-radius: 8px;
-    width: fit-content;
+    width: 100%;
     text-transform: capitalize;
     color: var(--background-color);
     background-color: var(--tertiary-color);
@@ -120,7 +139,7 @@
 @media only screen and (min-width: 48em) {
   .aboutMain {
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .aboutMain h4 {
@@ -171,6 +190,11 @@
   .aboutInfo {
     flex: 50%;
     text-align: start;
+  }
+
+  .aboutButton {
+    width: fit-content;
+    min-width: 20%;
   }
 
   .infoAboutWrapper h1 {

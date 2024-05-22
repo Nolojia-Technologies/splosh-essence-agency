@@ -1,19 +1,45 @@
 import { create } from 'zustand';
 import toast from "react-hot-toast";
 
+const isBrowser = typeof window !== 'undefined';
+
+function getFromLocalStorage(key) {
+  return isBrowser ? window.localStorage.getItem(key) : null;
+}
+
+function setInLocalStorage(key, value) {
+  if (isBrowser) {
+    window.localStorage.setItem(key, value);
+  }
+}
+
+function removeFromLocalStorage(key) {
+  if (isBrowser) {
+    window.localStorage.removeItem(key);
+  }
+}
+
 export const useAuthStore = create((set) => ({
-  isAuth: !!localStorage.getItem('token'),
-  isAgent: localStorage.getItem('isAgent') === 'true',
-  token: localStorage.getItem('token') || null,
+  isAuth: !!getFromLocalStorage('token'),
+  isAgent: getFromLocalStorage('isAgent') === 'true',
+  token: getFromLocalStorage('token') || null,
   toggleAuth: (token, isAgent) => {
-    localStorage.setItem('token', token);
-    localStorage.setItem('isAgent', isAgent.toString());
+    setInLocalStorage('token', token);
+    setInLocalStorage('isAgent', isAgent.toString());
     set({ isAuth: true, token, isAgent });
   },
   logOut: () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('isAgent');
-    toast.success("You have logged out")
+    removeFromLocalStorage('token');
+    removeFromLocalStorage('isAgent');
+    toast.success("You have logged out");
     set({ isAuth: false, token: null, isAgent: false });
   },
 }));
+
+// ------ booom ----
+// ---- booom ------
+// -------- booom --
+// --- booom -------
+// -------- booom --
+// ------ booom ----
+
