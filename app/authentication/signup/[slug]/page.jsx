@@ -74,33 +74,32 @@ export default function SignUp() {
           email: formData.email,
           password: formData.password,
           phoneNumber: formData.phoneNumber,
-          isAgent: pathname.includes('agent'),
+          isAgent: pathname.includes("agent"),
         }),
         headers: {
           "Content-Type": "application/json",
         },
       });
       const data = await response.json();
-      if(data.message) {  
-      toast.success(data.message);
-      return;
+      if (data.message) {
+        toast.success(data.message);
+        return;
       }
       const token = data.token;
-      localStorage.setItem('email', formData.email)
-      localStorage.setItem('username', formData.username)
-      localStorage.setItem('phoneNumber', formData.phoneNumber)
-      toggleAuth(token, pathname.includes('agent'));
-      toast.success("Account created successfully!, check email to verify account");
+      localStorage.setItem("email", formData.email);
+      localStorage.setItem("username", formData.username);
+      localStorage.setItem("phoneNumber", formData.phoneNumber);
+      toggleAuth(token, pathname.includes("agent"));
+      toast.success(
+        "Account created successfully!, check email to verify account"
+      );
       router.push("verify-user/not-verified", { scroll: false });
-   
     } catch (error) {
       if (error instanceof Object) {
         toast.error(error.message);
       } else {
         toast.error("An error occurred");
       }
-
-
     } finally {
       setIsLoading(false);
       setFormData({
@@ -118,19 +117,15 @@ export default function SignUp() {
 
   return (
     <div className={styles.authComponent}>
-      <BackBtn/>
+      <BackBtn />
       <div className={styles.authComponentBgImage}>
-        <Image
-          src={logo}
-          alt="signup Image"
-          quality="100"
-        />
+        <Image src={logo} alt="signup Image" quality="100" />
       </div>
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
           <div className={styles.formHeader}>
             <h1>Signup </h1>
-            <p>Enter account details</p>
+            <p>Enter account details</p>{" "}
           </div>
           {/* Username */}
           <div className={styles.authInput}>
@@ -264,12 +259,12 @@ export default function SignUp() {
             </p>
           </div>
           <h3>
-           Already have an account?{" "}
+            Already have an account?{" "}
             <div className={styles.btnLogin} onClick={Login}>
               Login
             </div>
           </h3>
-          </form>
+        </form>
       </div>
     </div>
   );

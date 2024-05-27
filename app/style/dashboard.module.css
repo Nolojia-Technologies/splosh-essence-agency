@@ -1,20 +1,167 @@
 @media screen {
-}
-
-/* using it as global style for larger devices  */
-@media only screen and (min-width: 48em) {
-
-}
-
-/* ipad pro screens & laptop */
-@media only screen and (min-width: 49em) and (max-width: 64em) {
-}
-
-/* large screens : Desktop and 4k screens */
-
-@media only screen and (min-width: 64.063em) and (max-width: 90em) {
-}
-
-/* 5k screens and above */
-@media only screen and (min-width: 91em) {
-}
+    .appSideNav {
+      width: 0;
+      height: 100%;
+      right: 10000px;
+      z-index: 999999;
+      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: none;
+      position: absolute;
+      flex-direction: column;
+      transition: all 0.4s ease 0s;
+      justify-content: space-between;
+      box-shadow: var(--card-shadow-line);
+      -webkit-transition: all 0.4s ease 0s;
+      background-color: var(--background-color);
+    }
+  
+    .appSideNav h1 {
+      font-size: 0.8rem;
+      font-weight: 300;
+      text-transform: capitalize;
+      color: var(--primary-color);
+    }
+  
+    .show {
+      left: 0;
+      display: flex;
+      width: var(--side-drawer-mobile-width);
+    }
+  
+    .logo {
+      margin-bottom: 10px;
+    }
+  
+    .dashboardExit {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+    }
+  
+    .exitIcon {
+      color: var(--light-background-color);
+    }
+  
+    .dashContainer {
+      gap: 4px;
+      height: 100%;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  
+    .dashLinkContainer {
+      width: 100%;
+      display: flex;
+      text-align: start;
+      align-items: center;
+  
+    }
+  
+    .dashLinkContainer h1 {
+      width: 70%;
+      text-align: start;
+    }
+  
+    .innerDashLink {
+      gap: 15px;
+      width: 100%;
+      padding: 12px;
+      display: flex;
+      cursor: pointer;
+      border-radius: 12px;
+      align-items: center;
+  
+    }
+  
+    .innerDashLink:hover {
+      background-color: var(--tertiary-color);
+    }
+  
+    .innerDashLink:hover h1 {
+      color: var(--background-color);
+    }
+  
+  
+    .innerDashLink:hover .dashIcon {
+      color: var(--background-color);
+    }
+  
+    .dashAdsContainer {
+      height: 200px;
+      display: flex;
+      padding: 16px;
+      cursor: pointer;
+      position: relative;
+      align-items: start;
+      border-radius: 30px;
+      flex-direction: column;
+    }
+  
+    .advertImage {
+      border-radius: 10px;
+    }
+  
+    .dashIcon {
+      width: 18px;
+      height: 18px;
+      color: var(--primary-color);
+    }
+  
+    .activeDash {
+      color: var(--background-color);
+      background-color: var(--tertiary-color);
+    }
+  
+    .activeDash h1 {
+      color: var(--background-color);
+    }
+  
+    .activeDash .pipeIcon {
+      display: flex;
+    }
+  
+    .activeDash h1 {
+      width: 50%;
+    }
+  
+    .activeDash .dashIcon {
+      color: var(--background-color);
+    }
+  
+    .logOutLink h1 {
+      width: 70%;
+      text-align: start;
+    }
+  }
+  
+  /* using it as global style for larger devices  */
+  @media only screen and (min-width: 48em) {
+    .appSideNav {
+      left: 0;
+      width:100%;
+      display: flex;
+      position: relative;
+  
+    }
+  
+  
+  
+    .dashContainer {
+      gap: 14px;
+    }
+  
+    .dashboardExit {
+      display: none;
+    }
+  
+    .logo {
+      margin-bottom: 10px;
+    }
+  
+  
+  
+  }
+  

@@ -36,7 +36,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
+    const storedUsername = localStorage.getItem("username");
     if (storedUsername) {
       setUsername(storedUsername);
     }
@@ -215,9 +215,9 @@ export default function Navbar() {
         )}
         <div className={styles.sideMidNav}>
           <Link
-            href="/page/home"
+            href="/"
             className={`${styles.sideLinkContainer} ${
-              pathname === "/page/home" ? styles.activeLink : ""
+              pathname === "/" ? styles.activeLink : ""
             }`}
           >
             Home
@@ -242,35 +242,9 @@ export default function Navbar() {
               height={20}
             />
           </Link>
-
-          <Link
-            href="/page/collections"
-            className={`${styles.sideLinkContainer} ${
-              pathname === "/page/collections" ? styles.activeLink : ""
-            }`}
-          >
-            Collections
-            <RightIcon
-              className={styles.arrowIcon}
-              alt="right icon"
-              width={20}
-              height={20}
-            />
-          </Link>
-          <Link
-            href="/page/promotions"
-            className={`${styles.sideLinkContainer} ${
-              pathname === "/page/promotions" ? styles.activeLink : ""
-            }`}
-          >
-            Promotions
-            <RightIcon
-              className={styles.arrowIcon}
-              alt="right icon"
-              width={20}
-              height={20}
-            />
-          </Link>
+          <div className={styles.mdropdownLink}>
+            <DropdownLink dropPlaceHolder="Products" />
+          </div>
           <Link
             href="/page/service"
             className={`${styles.sideLinkContainer} ${
@@ -286,6 +260,20 @@ export default function Navbar() {
             />
           </Link>
 
+          <Link
+            href="/page/promotions"
+            className={`${styles.sideLinkContainer} ${
+              pathname === "/page/promotions" ? styles.activeLink : ""
+            }`}
+          >
+            Promotions
+            <RightIcon
+              className={styles.arrowIcon}
+              alt="right icon"
+              width={20}
+              height={20}
+            />
+          </Link>
           <Link
             href="/page/contact"
             className={`${styles.sideLinkContainer} ${
