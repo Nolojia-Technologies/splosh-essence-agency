@@ -10,6 +10,7 @@ import Loader from "@/app/components/Loader";
 import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 import BackBtn from "@/app/components/BackButton";
+import { useLocalStorageValue } from './useLocalStorageValue';
 
 import {
   PhoneIcon,
@@ -21,6 +22,7 @@ import {
 
 export default function SignUp() {
   const [showConfirmPassword, setConfirmPassword] = useState(false);
+  const [token, setToken] = useLocalStorageValue('token', null);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toggleAuth } = useAuthStore();
@@ -93,7 +95,7 @@ export default function SignUp() {
       toast.success(
         "Account created successfully!, check email to verify account"
       );
-      router.push("verify-user/not-verified", { scroll: false });
+      router.push("verify-user/notVerified", { scroll: false });
     } catch (error) {
       if (error instanceof Object) {
         toast.error(error.message);

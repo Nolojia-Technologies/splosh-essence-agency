@@ -1,45 +1,25 @@
 import { create } from 'zustand';
 import toast from "react-hot-toast";
+import { useLocalStorageValue } from './useLocalStorageValue';
 
-const isBrowser = typeof window !== 'undefined';
+export const useAuthStore = create((set) => {
+  const [token, setToken] = useLocalStorageValue('token', null);
+  const [isAgent, setIsAgent] = useLocalStorageValue('isAgent', false);
 
-function getFromLocalStorage(key) {
-  return isBrowser ? window.localStorage.getItem(key) : null;
-}
-
-function setInLocalStorage(key, value) {
-  if (isBrowser) {
-    window.localStorage.setItem(key, value);
-  }
-}
-
-function removeFromLocalStorage(key) {
-  if (isBrowser) {
-    window.localStorage.removeItem(key);
-  }
-}
-
-export const useAuthStore = create((set) => ({
-  isAuth: !!getFromLocalStorage('token'),
-  isAgent: getFromLocalStorage('isAgent') === 'true',
-  token: getFromLocalStorage('token') || null,
-  toggleAuth: (token, isAgent) => {
-    setInLocalStorage('token', token);
-    setInLocalStorage('isAgent', isAgent.toString());
-    set({ isAuth: true, token, isAgent });
-  },
-  logOut: () => {
-    removeFromLocalStorage('token');
-    removeFromLocalStorage('isAgent');
-    toast.success("You have logged out");
-    set({ isAuth: false, token: null, isAgent: false });
-  },
-}));
-
-// ------ booom ----
-// ---- booom ------
-// -------- booom --
-// --- booom -------
-// -------- booom --
-// ------ booom ----
-
+  return {
+    isAuth: !!token,
+    isAgent,
+    token,
+    toggleAuth: (newToken, newIsAgent) => {
+      setToken(newToken);
+      setIsAgent(newIsAgent);
+      set({ isAuth: true, token: newToken, isAgent: newIsAgent });
+    },
+    logOut: () => {
+      setToken(null);
+      setIsAgent(false);
+      toast.success("You have logged out");
+      set({ isAuth: false, token: null, isAgent: false });
+    },
+  };
+});

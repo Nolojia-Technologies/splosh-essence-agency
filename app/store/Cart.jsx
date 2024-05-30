@@ -1,25 +1,18 @@
 import { create } from 'zustand';
+import { useLocalStorageValue } from './useLocalStorageValue';
 
-const isBrowser = typeof window !== 'undefined';
+export const useCartStore = create((set) => {
+  const [token, setToken] = useLocalStorageValue('token', null);
 
-function getFromLocalStorage(key) {
-  return isBrowser ? JSON.parse(window.localStorage.getItem(key)) : null;
-}
-
-function setInLocalStorage(key, value) {
-  if (isBrowser) {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }
-}
-
-export const useCartStore = create((set) => ({
-  isCartOpen: false,
-  token: getFromLocalStorage('token'),
-  toggleCart: () => {
-    set((state) => ({ isCartOpen: !state.isCartOpen }));
-  },
-  setToken: (token) => {
-    setInLocalStorage('token', token);
-    set({ token });
-  },
-}));
+  return {
+    isCartOpen: false,
+    token,
+    toggleCart: () => {
+      set((state) => ({ isCartOpen: !state.isCartOpen }));
+    },
+    setToken: (newToken) => {
+      setToken(newToken);
+      set({ token: newToken });
+    },
+  };
+});
