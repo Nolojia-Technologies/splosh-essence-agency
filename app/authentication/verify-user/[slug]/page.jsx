@@ -3,8 +3,6 @@
 import toast from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/verify.module.css";
 
 import {
@@ -12,40 +10,58 @@ import {
   XCircleIcon as NotApprovedIcon,
 } from "@heroicons/react/24/outline";
 
-export default function Verify({ token }) {
+export default function Verify({ params }) {
   const [isVerified, setIsVerified] = useState(false);
   const router = useRouter();
+  const { token } = params;
 
-  const Login = () => {
+  const SERVER_API = process.env.NEXT_PUBLIC_SERVER_API;
+
+  const login = () => {
     router.push("/authentication/login", { scroll: false });
   };
 
   useEffect(() => {
-    if (token && token.length > 1) {
-      setIsVerified(true);
-      toast.success("Verification successful!");
-    } else {
-      setIsVerified(false);
-      toast.error("Verification failed!");
+    const verifyToken = async (token) => {
+      try {
+        const response = await fetch(`${SERVER_API}/user/verify/${token}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || "Verification failed!");
+        }
+
+        setIsVerified(true);
+        toast.success("Verification successful!");
+        login();
+      } catch (error) {
+        setIsVerified(false);
+        toast.error(error.message || "Verification failed!");
+      }
+    };
+
+    if (token) {
+      verifyToken(token);
     }
-  }, [token]);
+  }, [token, SERVER_API, router]);
 
   return (
     <div className={styles.verifyComponent}>
       {isVerified ? (
-        <ApprovedIcon
-          className={styles.authIcon}
-          alt="approved icon"
-          width={20}
-          height={20}
-        />
+        <>
+          <ApprovedIcon className={styles.authIcon} width={80} height={80} />
+          <h1>You are verified</h1>
+        </>
       ) : (
-        <NotApprovedIcon
-          className={styles.authIcon}
-          alt="not approved icon"
-          width={20}
-          height={20}
-        />
+        <>
+          <NotApprovedIcon className={styles.authIcon} width={80} height={80} />
+          <h1>You are not verified</h1>
+        </>
       )}
     </div>
   );

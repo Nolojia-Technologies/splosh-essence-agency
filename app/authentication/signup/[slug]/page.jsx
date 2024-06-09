@@ -3,14 +3,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import logo from "@/public/assets/logo.png";
-import { useRouter } from "next/navigation";
 import Loader from "@/app/components/Loader";
 import { useAuthStore } from "@/app/store/Auth";
 import styles from "@/app/style/auth.module.css";
 import BackBtn from "@/app/components/BackButton";
-import { useLocalStorageValue } from './useLocalStorageValue';
 
 import {
   PhoneIcon,
@@ -21,8 +19,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function SignUp() {
-  const [showConfirmPassword, setConfirmPassword] = useState(false);
-  const [token, setToken] = useLocalStorageValue('token', null);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toggleAuth } = useAuthStore();
@@ -39,7 +36,7 @@ export default function SignUp() {
   const router = useRouter();
 
   const toggleConfirmPassword = () => {
-    setConfirmPassword(!showConfirmPassword);
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const toggleShowPassword = () => {
@@ -63,7 +60,7 @@ export default function SignUp() {
     setIsLoading(true);
 
     if (formData.password !== formData.confirmPassword) {
-      toast.error("Password does not match");
+      toast.error("Passwords do not match");
       setIsLoading(false);
       return;
     }
@@ -82,26 +79,23 @@ export default function SignUp() {
           "Content-Type": "application/json",
         },
       });
+
       const data = await response.json();
+
       if (data.message) {
         toast.success(data.message);
         return;
       }
+
       const token = data.token;
       localStorage.setItem("email", formData.email);
       localStorage.setItem("username", formData.username);
       localStorage.setItem("phoneNumber", formData.phoneNumber);
       toggleAuth(token, pathname.includes("agent"));
-      toast.success(
-        "Account created successfully!, check email to verify account"
-      );
-      router.push("verify-user/notVerified", { scroll: false });
-    } catch (error) {
-      if (error instanceof Object) {
-        toast.error(error.message);
-      } else {
-        toast.error("An error occurred");
-      }
+      toast.success("Account created successfully! Check email to verify account");
+    router.push("/authentication/login", { scroll: false });
+  } catch (error) {
+      toast.error(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
       setFormData({
@@ -113,6 +107,7 @@ export default function SignUp() {
       });
     }
   }
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -121,22 +116,16 @@ export default function SignUp() {
     <div className={styles.authComponent}>
       <BackBtn />
       <div className={styles.authComponentBgImage}>
-        <Image src={logo} alt="signup Image" quality="100" />
+        <Image src={logo} alt="Signup Image" quality="100" priority />
       </div>
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
           <div className={styles.formHeader}>
-            <h1>Signup </h1>
-            <p>Enter account details</p>{" "}
+            <h1>Signup</h1>
+            <p>Enter account details</p>
           </div>
-          {/* Username */}
           <div className={styles.authInput}>
-            <UserNameIcon
-              className={styles.authIcon}
-              alt="Username icon"
-              width={20}
-              height={20}
-            />
+            <UserNameIcon className={styles.authIcon} width={20} height={20} />
             <input
               type="text"
               name="username"
@@ -145,14 +134,8 @@ export default function SignUp() {
               onChange={handleChange}
             />
           </div>
-          {/* Email */}
           <div className={styles.authInput}>
-            <UserNameIcon
-              className={styles.authIcon}
-              alt="Email icon"
-              width={20}
-              height={20}
-            />
+            <UserNameIcon className={styles.authIcon} width={20} height={20} />
             <input
               type="email"
               name="email"
@@ -161,14 +144,8 @@ export default function SignUp() {
               onChange={handleChange}
             />
           </div>
-          {/* Phone Number */}
           <div className={styles.authInput}>
-            <PhoneIcon
-              className={styles.authIcon}
-              alt="Phone Number icon"
-              width={20}
-              height={20}
-            />
+            <PhoneIcon className={styles.authIcon} width={20} height={20} />
             <input
               type="tel"
               name="phoneNumber"
@@ -177,14 +154,8 @@ export default function SignUp() {
               onChange={handleChange}
             />
           </div>
-          {/*  Password */}
           <div className={styles.authInput}>
-            <PasswordIcon
-              className={styles.authIcon}
-              alt="password icon"
-              width={20}
-              height={20}
-            />
+            <PasswordIcon className={styles.authIcon} width={20} height={20} />
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -198,28 +169,14 @@ export default function SignUp() {
               onClick={toggleShowPassword}
             >
               {showPassword ? (
-                <HidePasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <HidePasswordIcon className={styles.authIcon} width={20} height={20} />
               ) : (
-                <ShowPasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <ShowPasswordIcon className={styles.authIcon} width={20} height={20} />
               )}
             </button>
           </div>
-          {/* Confirm Password */}
           <div className={styles.authInput}>
-            <PasswordIcon
-              className={styles.authIcon}
-              alt="confirm password"
-              width={20}
-              height={20}
-            />
+            <PasswordIcon className={styles.authIcon} width={20} height={20} />
             <input
               type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
@@ -233,31 +190,19 @@ export default function SignUp() {
               onClick={toggleConfirmPassword}
             >
               {showConfirmPassword ? (
-                <HidePasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <HidePasswordIcon className={styles.authIcon} width={20} height={20} />
               ) : (
-                <ShowPasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <ShowPasswordIcon className={styles.authIcon} width={20} height={20} />
               )}
             </button>
           </div>
           <div className={styles.authBottomBtn}>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className={styles.formAuthButton}
-            >
+            <button type="submit" disabled={isLoading} className={styles.formAuthButton}>
               {isLoading ? <Loader /> : "Sign up"}
             </button>
             <p>
-              <span onClick={readTerms}>Terms and Condition</span> &{" "}
-              <span onClick={policy}> Privacy Policy</span>{" "}
+              <span onClick={readTerms}>Terms and Conditions</span> &{" "}
+              <span onClick={policy}>Privacy Policy</span>
             </p>
           </div>
           <h3>

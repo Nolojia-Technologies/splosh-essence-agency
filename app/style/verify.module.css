@@ -3,13 +3,26 @@
     top: 0;
     left: 0;
     right: 0;
+    gap: 10px;
     bottom: 0;
     display: flex;
+    position: absolute;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    justify-content: space-between;
     background-color: var(--background-light);
   }
+
+  .authIcon {
+    color: var(--tertiary-color);
+  }
+
+  .verifyComponent h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+  }
+
 
 
   }

@@ -12,7 +12,7 @@ import BackBtn from "@/app/components/BackButton";
 
 import {
   KeyIcon as PasswordIcon,
-  UserIcon as emailIcon,
+  UserIcon as EmailIcon,
   EyeIcon as ShowPasswordIcon,
   EyeSlashIcon as HidePasswordIcon,
 } from "@heroicons/react/24/outline";
@@ -40,7 +40,7 @@ export default function Login() {
   async function onSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-  
+
     try {
       const response = await fetch(`${SERVER_API}/user/login`, {
         method: "POST",
@@ -52,22 +52,21 @@ export default function Login() {
           "Content-Type": "application/json",
         },
       });
-  
+
       const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || "An error occurred");
+      }
+
       const token = data.token;
       const _id = data.id;
-  
+
       toggleAuth(token);
-      getUserDetails(_id, token);
+      await getUserDetails(_id, token);
       toast.success("Login successful!");
       router.push("/page/home", { scroll: false });
-      localStorage.setItem("username", data.name);
     } catch (error) {
-      if (error instanceof Object) {
-        toast.error(error.message);
-      } else {
-        toast.error("An error occurred");
-      }
+      toast.error(error.message || "An error occurred");
     } finally {
       setIsLoading(false);
       setFormData({
@@ -76,11 +75,11 @@ export default function Login() {
       });
     }
   }
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
   const getUserDetails = async (id, token) => {
     try {
       const response = await fetch(`${SERVER_API}/user/${id}`, {
@@ -90,23 +89,22 @@ export default function Login() {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       const data = await response.json();
-      localStorage.setItem("username", data.name);
-    }  catch (error) {
-      if (error instanceof Object) {
-        toast.error(error.message);
-      } else {
-        toast.error("An error occurred");
+      if (!response.ok) {
+        throw new Error(data.message || "An error occurred");
       }
+      localStorage.setItem("username", data.name);
+    } catch (error) {
+      toast.error(error.message || "An error occurred");
     }
-}
+  };
 
   return (
     <div className={styles.authComponent}>
       <BackBtn />
       <div className={styles.authComponentBgImage}>
-        <Image src={logo} alt="signup Image" quality="100" />
+        <Image src={logo} alt="signup Image" quality="100" priority />
       </div>
       <div className={styles.authWrapper}>
         <form onSubmit={onSubmit} className={styles.formContainer}>
@@ -116,34 +114,26 @@ export default function Login() {
           </div>
           {/* email */}
           <div className={styles.authInput}>
-            <emailIcon
-              className={styles.authIcon}
-              alt="email icon"
-              width={20}
-              height={20}
-            />
+            <EmailIcon className={styles.authIcon} width={20} height={20} />
             <input
-              type="text"
+              type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleChange}
+              required
             />
           </div>
-          {/*  password */}
+          {/* password */}
           <div className={styles.authInput}>
-            <PasswordIcon
-              className={styles.authIcon}
-              alt="password icon"
-              width={20}
-              height={20}
-            />
+            <PasswordIcon className={styles.authIcon} width={20} height={20} />
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
+              required
             />
             <button
               type="button"
@@ -151,17 +141,9 @@ export default function Login() {
               onClick={toggleShowPassword}
             >
               {showPassword ? (
-                <HidePasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <HidePasswordIcon className={styles.authIcon} width={20} height={20} />
               ) : (
-                <ShowPasswordIcon
-                  className={styles.authIcon}
-                  width={20}
-                  height={20}
-                />
+                <ShowPasswordIcon className={styles.authIcon} width={20} height={20} />
               )}
             </button>
           </div>
@@ -175,10 +157,10 @@ export default function Login() {
             </button>
           </div>
           <h3>
-            Don`t have an account?{" "}
-            <div className={styles.btnLogin} onClick={SignUp}>
+            Dont have an account?{" "}
+            <span className={styles.btnLogin} onClick={SignUp}>
               Sign up
-            </div>
+            </span>
           </h3>
         </form>
       </div>
